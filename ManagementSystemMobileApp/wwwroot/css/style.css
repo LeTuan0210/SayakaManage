@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+:root{
+    --main--color: #ff0000;
+    --white--color: #ffffff;
+    --blue--color: #130f40;
+    --gray--color: #e3e3e3fe;
+}
+body{
+    font-family: "Roboto", serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+/* Header Css */
+.header{
+    position: fixed;
+    left: 0;
+    bottom:0;
+    right: 0;
+    z-index: 9999;
+    background: var(--white--color);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.menuIcon{
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.3s linear;
+}
+
+.menuIcon i{
+    font-size: 18px;
+    color: var(--blue--color);
+}
+
+.menuIcon:hover.menuIcon>i{
+    color: #ff0000;
+    cursor: pointer;
+}
+/* Header Css */
+
+.imageCustomer{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid var(--blue--color);
+    padding: 5px;
+}
+
+.imageCustomer img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nameUser{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.menuAppIcon{
+    padding: 15px;
+    border: 1px solid var(--gray--color);
+    border-radius: 15px;
+    transition: 0.3s linear;
+}
+
+.menuAppIcon:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+}
+
+.appIcon i{
+    font-size: 20px;
+    color: var(--blue--color);
+}
+
+.appName{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue--color);
+}
+
+.titleSections{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--main--color);
+    position: relative;
+}
+
+.titleSections::after{
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -5px;
+    width: 15%;
+    height: 5px;
+    border-radius: 15px;
+    background: var(--main--color);
+}
+
+.iconSlide i{
+    color: var(--white--color);
+    font-size: 18px;
+}
+
+.iconSlideDisountSameAs{
+    color: var(--blue--color);
+    font-size: 18px;
+}
+
+.translate{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--blue--color);
+    background: var(--white--color);
+}
+
+.translate h3{
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--blue--color);
+}
+
+.discountTitle{
+    font-size: 14px;
+    padding-top: 5px;
+    font-weight: bold;
+    color: var(--blue--color);
+}
+
+.resImage{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.resImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.resTitle{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--blue--color);
+}
+
+.resAddress{
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--blue--color);
+}
+
+.boxMenu{
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid var(--gray--color);
+    border-radius: 8px;
+}
+
+.menuName{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.menuPrice{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.customBtn{
+    padding: 5px 20px;
+    background: var(--gray--color);
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--blue--color);
+    transition: 0.3s linear;
+}
+
+.customBtnRes{
+    padding: 5px 10px;
+    border: 2px solid var(--blue--color);
+    border-radius: 50%;
+    background: var(--white--color);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--blue--color);
+    transition: 0.3s linear;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    animation:  ring 4s infinite alternate;
+}
+
+@keyframes ring {
+    0% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+    10% {
+      transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    20% {
+      transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    30% {
+      transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    40% {
+      transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    50% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+    100% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+  }
+
+.customBtn:hover{
+    color: var(--main--color);
+    cursor: pointer;
+}
+
+.activeCustomBtn{
+    color: var(--main--color);
+}
+
+.discountCustom{
+    max-width: 100%;
+    height: 175px;
+    background-image: url('../image/bgTicket.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.titleCustom{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Delius", serif;
+    color: var(--main--color);
+}
+
+.headeDetail h1{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--main--color);
+}
+.headeDetail p{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.descDetail{
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.boxIconCustom{
+    padding: 1px 6px;
+    background: #B0D7EC;
+    color: var(--blue--color);
+    border-radius: 50%;
+}
+
+.discountName{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--blue--color);
+}
+
+.disountDay{
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.discoutDesc{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.fixedRes{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+}
+
+.resItem{
+    margin-top: 45%;
+    margin-bottom: 20%;
+}
+
+.resDetailDesc{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.conactIcon{
+    font-size: 14px;
+    color: var(--blue--color);
+}
+
+.listText{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue--color);
+}
+
+.frameMap{
+    width: 100%;
+    height: 200px;
+}
+
+.marginBootom{
+    margin-bottom: 100px;
+}
+
+.labelForm{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--blue--color);
+}
+
+.labelForm input{
+    font-size: 12px;
+    font-weight: 400;
+}

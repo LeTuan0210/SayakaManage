@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataModels.Filter;
+using DataServices.Interfaces;
 using DataServices.Repository;
 using DataViewModels.Responses.SystemPromotion;
 
@@ -8,8 +9,8 @@ namespace BusinessServices.Repositories.SystemPromotionServices
     public class SystemPromotionClientServices : SystemPromotionBaseServices, ISystemPromotionClientServices
     {
         private readonly IMapper _mapper;
-        private readonly SystemPromotionDataServices _promotionServices;
-        public SystemPromotionClientServices(SystemPromotionDataServices promotionServices, IMapper mapper) : base(promotionServices, mapper)
+        private readonly ISystemPromotionDataServices _promotionServices;
+        public SystemPromotionClientServices(ISystemPromotionDataServices promotionServices, IMapper mapper) : base(promotionServices, mapper)
         {
             _promotionServices = promotionServices;
             _mapper = mapper;

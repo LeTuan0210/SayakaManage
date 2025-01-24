@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 
-namespace SayakaAdminManagement.Components.Account
+namespace ManagementSystemWebAdmin.Components.Account
 {
     public sealed class IdentityRedirectManager(NavigationManager navigationManager)
     {

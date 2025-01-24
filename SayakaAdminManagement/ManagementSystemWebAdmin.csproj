@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-SayakaAdminManagement-bba21bcf-2cf4-4eb1-9701-046c5e9b883f</UserSecretsId>
+    <UserSecretsId>aspnet-ManagementSystemWebAdmin-bba21bcf-2cf4-4eb1-9701-046c5e9b883f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

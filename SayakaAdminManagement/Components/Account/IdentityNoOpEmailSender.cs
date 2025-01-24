@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using DataServices;
 
-namespace SayakaAdminManagement.Components.Account
+namespace ManagementSystemWebAdmin.Components.Account
 {
     // Remove the "else if (EmailSender is IdentityNoOpEmailSender)" block from RegisterConfirmation.razor after updating with a real implementation.
     public sealed class IdentityNoOpEmailSender : IEmailSender<ApplicationUser>

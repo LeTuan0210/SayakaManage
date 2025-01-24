@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using DataModels.Entities;
+using DataViewModels.Requests.SystemPromotion;
+using DataViewModels.Responses.SystemPromotion;
 
 namespace BusinessServices.AutoMapperProfile
 {
@@ -6,7 +9,10 @@ namespace BusinessServices.AutoMapperProfile
     {
         public SystemPromotionMapperProfile() 
         {
-            
+            CreateMap<SystemPromotion, SystemPromotionResponseModel>();
+            CreateMap<SystemPromotion, UpdateSystemPromotionRequestModel>();
+            CreateMap<CreateSystemPromotionRequestModel,SystemPromotion>();
+            CreateMap<UpdateSystemPromotionRequestModel, SystemPromotion>();
         }
     }
 }

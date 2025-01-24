@@ -1,12 +1,20 @@
 ﻿using AutoMapper;
 using DataModels.Filter;
+using DataServices.Interfaces;
 using DataServices.Repository;
 using DataViewModels.Responses.SystemPromotion;
 
 namespace BusinessServices.Repositories.SystemPromotionServices
 {
-    public class SystemPromotionBaseServices(SystemPromotionDataServices _promotionService, IMapper _mapper) : ISystemPromotionBaseServices
+    public class SystemPromotionBaseServices: ISystemPromotionBaseServices
     {
+        private readonly ISystemPromotionDataServices _promotionService;
+        private readonly IMapper _mapper;
+        public SystemPromotionBaseServices(ISystemPromotionDataServices promotionService, IMapper mapper)
+        {
+            _mapper = mapper;
+            _promotionService = promotionService;
+        }
         public async Task<List<SystemPromotionResponseModel>> GetAllPromotionAsync(PromotionFilter filter)
         {
             try

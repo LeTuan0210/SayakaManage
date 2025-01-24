@@ -12,9 +12,9 @@ namespace BusinessServices
 
             // Promotion
 
-            services.AddScoped<ISystemPromotionBaseServices, SystemPromotionBaseServices>();
             services.AddScoped<ISystemPromotionServerServices, SystemPromotionServerServices>();
             services.AddScoped<ISystemPromotionClientServices, SystemPromotionClientServices>();
+            services.AddScoped<ISystemPromotionBaseServices, SystemPromotionBaseServices>();
 
             // 
         }

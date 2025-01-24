@@ -11,7 +11,7 @@ namespace DataServices.Repository
         {
             promotion.Id = Guid.NewGuid();
 
-            _context.systemPromotions.Add(promotion);
+            _context.SystemPromotions.Add(promotion);
 
             await _context.SaveChangesAsync();
             
@@ -20,7 +20,7 @@ namespace DataServices.Repository
 
         public Task<List<SystemPromotion>> GetAllPromotionAsync(PromotionFilter filter)
         {
-            var query = _context.systemPromotions.Where(promotion => promotion.promotionName.ToLower().Contains(filter.FilterName.ToLower())).AsQueryable();
+            var query = _context.SystemPromotions.Where(promotion => promotion.promotionName.ToLower().Contains(filter.FilterName.ToLower())).AsQueryable();
 
             switch(filter.SortByName)
             {
@@ -56,7 +56,7 @@ namespace DataServices.Repository
 
         public async Task<SystemPromotion> GetPromotionAsync(Guid id)
         {
-            var result = await _context.systemPromotions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            var result = await _context.SystemPromotions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 
             if (result == null)
                 throw new NullReferenceException();
@@ -66,7 +66,7 @@ namespace DataServices.Repository
 
         public async Task<SystemPromotion> GetPromotionAsync(string alias)
         {
-            var result = await _context.systemPromotions.AsNoTracking().FirstOrDefaultAsync(x => x.promotionAlias == alias);
+            var result = await _context.SystemPromotions.AsNoTracking().FirstOrDefaultAsync(x => x.promotionAlias == alias);
 
             if (result == null)
                 throw new NullReferenceException();
@@ -76,7 +76,7 @@ namespace DataServices.Repository
 
         public async Task<SystemPromotion> UpdatePromotionAsync(SystemPromotion promotion)
         {
-            _context.systemPromotions.Update(promotion);
+            _context.SystemPromotions.Update(promotion);
 
             await _context.SaveChangesAsync();
 
@@ -84,12 +84,12 @@ namespace DataServices.Repository
         }
         public async Task<bool> DeletePromotionAsync(Guid id)
         {
-            var promotion = await _context.systemPromotions.FirstOrDefaultAsync(p => p.Id == id);
+            var promotion = await _context.SystemPromotions.FirstOrDefaultAsync(p => p.Id == id);
 
             if (promotion == null)
                 return false;
 
-            _context.systemPromotions.Remove(promotion);
+            _context.SystemPromotions.Remove(promotion);
 
             await _context.SaveChangesAsync();
 

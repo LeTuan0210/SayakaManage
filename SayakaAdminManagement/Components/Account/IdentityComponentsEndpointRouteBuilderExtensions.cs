@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using SayakaAdminManagement.Components.Account.Pages;
-using SayakaAdminManagement.Components.Account.Pages.Manage;
+using ManagementSystemWebAdmin.Components.Account.Pages;
+using ManagementSystemWebAdmin.Components.Account.Pages.Manage;
 using DataServices;
 
 namespace Microsoft.AspNetCore.Routing

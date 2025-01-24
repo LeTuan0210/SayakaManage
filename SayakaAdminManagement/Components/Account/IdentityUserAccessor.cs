@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using DataServices;
 
-namespace SayakaAdminManagement.Components.Account
+namespace ManagementSystemWebAdmin.Components.Account
 {
     public sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
     {
