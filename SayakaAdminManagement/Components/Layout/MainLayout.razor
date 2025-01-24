@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenSidebarToggle Click="@(() => sidebar1Expanded = !sidebar1Expanded)" />
+            <RadzenLabel Text="Admin Management" />
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar Style="width: 250px;" @bind-Expanded="@sidebar1Expanded">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Path="/Admin/Categories" Text="Categoríe" />
+            <RadzenPanelMenuItem Path="/admin/products" Text="Products" />            
+            <RadzenPanelMenuItem Path="/admin/contents" Text="Web Content" />
+            <RadzenPanelMenuItem Path="/admin/Blogs" Text="Blogs" />
+            <RadzenPanelMenuItem Path="/admin/support-requests" Text="Support Request" />
+            <RadzenPanelMenuItem Path="/admin/web-details" Text="Web Details" />           
+            <AuthorizeView Roles="admin">
+                <Authorized>
+                    <RadzenPanelMenuItem Path="/admin/users" Text="Account" />
+                </Authorized>
+            </AuthorizeView>
+            <RadzenPanelMenuItem Path="/" Text="Log Out" />
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div class="rz-p-0">
+            @Body
+        </div>
+    </RadzenBody>
+</RadzenLayout>
+
+<RadzenComponents @rendermode="InteractiveServer" />
+
+@code {
+    bool sidebar1Expanded = true;
+}

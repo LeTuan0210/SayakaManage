@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataModels\DataModels.csproj" />
+    <ProjectReference Include="..\DataServices\DataServices.csproj" />
+    <ProjectReference Include="..\DataViewModels\DataViewModels.csproj" />
+    <ProjectReference Include="..\Extensions\Extensions.csproj" />
+  </ItemGroup>
+
+</Project>
