@@ -1,4 +1,4 @@
-﻿namespace DataViewModels.Requests.SystemPromotion
+﻿namespace DataViewModels.Requests
 {
     public class UpdateSystemPromotionRequestModel
     {

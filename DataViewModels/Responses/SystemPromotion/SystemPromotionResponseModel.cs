@@ -1,4 +1,4 @@
-﻿namespace DataViewModels.Responses.SystemPromotion
+﻿namespace DataViewModels.Responses
 {
     public class SystemPromotionResponseModel
     {

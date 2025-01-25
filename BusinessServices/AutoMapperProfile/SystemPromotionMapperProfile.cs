@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DataModels.Entities;
-using DataViewModels.Requests.SystemPromotion;
-using DataViewModels.Responses.SystemPromotion;
+using DataViewModels.Requests;
+using DataViewModels.Responses;
 
 namespace BusinessServices.AutoMapperProfile
 {

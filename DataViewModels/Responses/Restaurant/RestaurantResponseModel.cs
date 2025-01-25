@@ -1,4 +1,4 @@
-﻿namespace DataViewModels.Responses.Restaurant
+﻿namespace DataViewModels.Responses
 {
     public class RestaurantResponseModel
     {

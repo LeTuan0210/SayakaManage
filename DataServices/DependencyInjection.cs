@@ -8,6 +8,9 @@ namespace DataServices
     {
         public static void AddDataServices(this IServiceCollection services)
         {
+            services.AddScoped<IRestaurantAreaDataServices, RestaurantAreaDataServices>();
+            services.AddScoped<IRestaurantDataServices, RestaurantDataServices>();
+            services.AddScoped<IMenuDataServices, MenuDataServices>();
             services.AddScoped<ISystemPromotionDataServices, SystemPromotionDataServices>();
         }
     }

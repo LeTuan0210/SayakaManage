@@ -1,4 +1,4 @@
-﻿namespace DataViewModels.Requests.RestaurantInfo
+﻿namespace DataViewModels.Requests
 {
     public class CreateRestaurantRequestModel
     {

@@ -1,9 +1,9 @@
-﻿using DataViewModels.Requests.RestaurantInfo;
-using DataViewModels.Responses.Restaurant;
+﻿using DataViewModels.Requests;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.RestaurantServices
+namespace BusinessServices.Repositories
 {
-    internal interface IRestaurantServerServices : IRestaurantBaseServices
+    public interface IRestaurantServerServices : IRestaurantBaseServices
     {
         Task<RestaurantResponseModel> CreateNewRestaurantAsync(CreateRestaurantRequestModel model);
         Task<RestaurantResponseModel> GetRestaurantByIdAsync(Guid id);

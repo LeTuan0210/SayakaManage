@@ -1,0 +1,62 @@
+﻿@page "/restaurants"
+@using DataModels.Filter
+@inject IRestaurantServerServices _restaurantService
+
+<RadzenText TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center">Nhà hàng</RadzenText>
+<RadzenButton Icon="plus" ButtonStyle="ButtonStyle.Success">Thêm Nhà Hàng</RadzenButton>
+
+@if(restaurants != null)
+{
+    <RadzenTabs>
+        <Tabs>
+            @foreach(var group in restaurants.GroupBy(x => x.restaurantArea))
+            {
+                <RadzenTabsItem Text="@group.Key">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%">
+                                    Tên
+                                </th>
+                                <th style="width: 25%">
+                                    Tỉnh
+                                </th>
+                                <th style="width: 25%">
+                                    Số điện thoại
+                                </th>
+                                <th style="width: 25%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in group)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.restaurantName
+                                    </td>
+                                    <td>
+                                        @item.restaurantCity
+                                    </td>
+                                    <td>
+                                        @item.restaurantPhone
+                                    </td>
+                                    <td>
+                                        <RadzenButton>Edit</RadzenButton>                                        
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </RadzenTabsItem>
+            }
+        </Tabs>
+    </RadzenTabs>
+}
+
+@code {
+    List<RestaurantResponseModel> restaurants { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        restaurants = await _restaurantService.GetAllRestaurantsAsync(new RestaurantFilter { PageSize = 100 });
+    }
+}

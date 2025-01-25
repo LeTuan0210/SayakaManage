@@ -1,7 +1,7 @@
-﻿using DataViewModels.Requests.SystemPromotion;
-using DataViewModels.Responses.SystemPromotion;
+﻿using DataViewModels.Requests;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.SystemPromotionServices
+namespace BusinessServices.Repositories
 {
     public interface ISystemPromotionServerServices : ISystemPromotionBaseServices
     {

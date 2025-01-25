@@ -1,7 +1,7 @@
 ﻿using DataModels.Filter;
-using DataViewModels.Responses.Restaurant;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.RestaurantServices
+namespace BusinessServices.Repositories
 {
     public interface IRestaurantBaseServices
     {

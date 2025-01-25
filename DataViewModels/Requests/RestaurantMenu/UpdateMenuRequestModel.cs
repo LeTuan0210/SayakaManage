@@ -1,6 +1,6 @@
-﻿namespace DataViewModels.Requests.RestaurantMenu
+﻿namespace DataViewModels.Requests
 {
-    public class UpdateRestaurantRequest
+    public class UpdateMenuRequestModel
     {
         public Guid Id { get; set; }
         public string menuName { get; set; }

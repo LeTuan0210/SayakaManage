@@ -2,9 +2,9 @@
 using DataModels.Filter;
 using DataServices.Interfaces;
 using DataServices.Repository;
-using DataViewModels.Responses.SystemPromotion;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.SystemPromotionServices
+namespace BusinessServices.Repositories
 {
     public class SystemPromotionBaseServices: ISystemPromotionBaseServices
     {

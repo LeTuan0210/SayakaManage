@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using DataModels.Filter;
 using DataServices.Interfaces;
-using DataViewModels.Responses.Restaurant;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.RestaurantServices
+namespace BusinessServices.Repositories
 {
     public class RestaurantBaseServices(IRestaurantDataServices _restaurantService, IMapper _mapper) : IRestaurantBaseServices
     {

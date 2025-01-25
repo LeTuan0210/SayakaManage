@@ -1,7 +1,7 @@
-﻿using BusinessServices.Repositories.SystemPromotionServices;
-using DataViewModels.Responses.Restaurant;
-using DataViewModels.Responses.RestaurantMenu;
-using DataViewModels.Responses.SystemPromotion;
+﻿using BusinessServices.Repositories;
+using DataViewModels.Responses;
+using DataViewModels.Responses;
+using DataViewModels.Responses;
 using Microsoft.AspNetCore.Components;
 
 namespace ManagementSystemMobileApp.Components.Pages

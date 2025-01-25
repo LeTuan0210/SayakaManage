@@ -1,12 +1,12 @@
 ﻿using DataModels.Filter;
-using DataViewModels.Responses.Restaurant;
-using DataViewModels.Responses.SystemPromotion;
+using DataViewModels.Responses;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.RestaurantServices
+namespace BusinessServices.Repositories
 {
     public interface IRestaurantClientServices : IRestaurantBaseServices
     {
         Task<RestaurantResponseModel> GetRestaurantByAliasAsync(string alias);
-        Task<List<RestaurantResponseModel>> GetRelatedRestaurantAsync(PromotionFilter filter);
+        Task<List<RestaurantResponseModel>> GetRelatedRestaurantAsync(RestaurantFilter filter);
     }
 }

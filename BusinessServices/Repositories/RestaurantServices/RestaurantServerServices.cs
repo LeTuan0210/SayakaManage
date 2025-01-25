@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using DataModels.Entities;
 using DataServices.Interfaces;
-using DataServices.Repository;
-using DataViewModels.Requests.RestaurantInfo;
-using DataViewModels.Responses.Restaurant;
+using DataViewModels.Requests;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.RestaurantServices
+namespace BusinessServices.Repositories
 {
     public class RestaurantServerServices : RestaurantBaseServices, IRestaurantServerServices
     {
@@ -16,29 +16,88 @@ namespace BusinessServices.Repositories.RestaurantServices
             _restaurantServices = restaurantServices;
             _mapper = mapper;
         }
-        public Task<RestaurantResponseModel> CreateNewRestaurantAsync(CreateRestaurantRequestModel model)
+        public async Task<RestaurantResponseModel> CreateNewRestaurantAsync(CreateRestaurantRequestModel model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var createModel = _mapper.Map<RestaurantInfo>(model);
+
+                createModel = await _restaurantServices.CreateNewRestaurantAsync(createModel);
+
+                return _mapper.Map<RestaurantResponseModel>(createModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }        
+
+        public async Task<RestaurantResponseModel> GetRestaurantByIdAsync(Guid id)
+        {
+            try
+            {
+                var result = await _restaurantServices.GetRestaurantAsync(id);
+
+                return _mapper.Map<RestaurantResponseModel>(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
-        public Task<bool> DeleteRestaurantAsync(Guid id)
+        public async Task<UpdateRestaurantRequestModel> GetUpdateRestaurantAsync(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                var result = await _restaurantServices.GetRestaurantAsync(id);
+
+                return _mapper.Map<UpdateRestaurantRequestModel>(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
-        public Task<RestaurantResponseModel> GetRestaurantByIdAsync(Guid id)
+        public async Task<RestaurantResponseModel> UpdateRestaurantAsync(UpdateRestaurantRequestModel model)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var updateModel = await _restaurantServices.GetRestaurantAsync(model.Id);
 
-        public Task<UpdateRestaurantRequestModel> GetUpdateRestaurantAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+                if (updateModel == null)
+                    return null;
 
-        public Task<RestaurantResponseModel> UpdateRestaurantAsync(UpdateRestaurantRequestModel model)
+                _mapper.Map(model, updateModel);
+
+                updateModel = await _restaurantServices.UpdateRestaurantAsync(updateModel);
+
+                return _mapper.Map<RestaurantResponseModel>(updateModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public async Task<bool> DeleteRestaurantAsync(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _restaurantServices.DeleteRestaurantAsync(id);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

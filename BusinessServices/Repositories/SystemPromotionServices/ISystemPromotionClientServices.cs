@@ -1,7 +1,7 @@
 ﻿using DataModels.Filter;
-using DataViewModels.Responses.SystemPromotion;
+using DataViewModels.Responses;
 
-namespace BusinessServices.Repositories.SystemPromotionServices
+namespace BusinessServices.Repositories
 {
     public interface ISystemPromotionClientServices : ISystemPromotionBaseServices
     {

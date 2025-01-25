@@ -1,6 +1,6 @@
-﻿namespace DataViewModels.Requests.RestaurantMenu
+﻿namespace DataViewModels.Requests
 {
-    public class CreateRestaurantRequest
+    public class CreateMenuRequestModel
     {
         public string menuName { get; set; }
         public string menuDescription { get; set; }
