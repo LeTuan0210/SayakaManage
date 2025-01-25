@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DataModels.Entities;
 using DataServices.Interfaces;
-using DataServices.Repository;
 using DataViewModels.Requests.SystemPromotion;
 using DataViewModels.Responses.SystemPromotion;
 

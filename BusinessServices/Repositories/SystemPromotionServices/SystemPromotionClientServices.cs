@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DataModels.Filter;
 using DataServices.Interfaces;
-using DataServices.Repository;
 using DataViewModels.Responses.SystemPromotion;
 
 namespace BusinessServices.Repositories.SystemPromotionServices
