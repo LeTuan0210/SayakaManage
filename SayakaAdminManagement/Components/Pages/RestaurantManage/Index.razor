@@ -1,5 +1,4 @@
 ﻿@page "/restaurants"
-@using DataModels.Filter
 @inject IRestaurantServerServices _restaurantService
 
 <RadzenText TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center">Nhà hàng</RadzenText>
@@ -15,6 +14,9 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>
+
+                                </th>
                                 <th style="width: 25%">
                                     Tên
                                 </th>
@@ -31,6 +33,9 @@
                             @foreach(var item in group)
                             {
                                 <tr>
+                                    <td>
+                                        <RadzenGravatar Email="@item.restaurantAvatarLink" />
+                                    </td>
                                     <td>
                                         @item.restaurantName
                                     </td>
@@ -55,6 +60,7 @@
 
 @code {
     List<RestaurantResponseModel> restaurants { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         restaurants = await _restaurantService.GetAllRestaurantsAsync(new RestaurantFilter { PageSize = 100 });

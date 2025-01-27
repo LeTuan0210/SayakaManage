@@ -43,8 +43,8 @@
                 @foreach(var item in promotions)
                 {
                     <div class="carousel-item @(promotions.IndexOf(item) == 0 ? "active" : "")">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" class="d-block w-100" alt="Slide 1">
-                        <h2 class="discountTitle">KHuyến mãi</h2>
+                        <img src="@item.imageBannerLink" class="d-block w-100" alt="Slide 1">
+                        <h2 class="discountTitle">@item.promotionName</h2>
                     </div>
                 }
             }
@@ -62,91 +62,58 @@
         </button>
     </div>
 </div>
-<div class="appDiscount px-2 mt-3">
-    <h3 class="titleSections mb-3">Thực đơn</h3>
-    <div class="d-flex justify-content-center align-items-center py-2">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="customBtn activeCustomBtn">Buffet</button>
-            <button type="button" class="customBtn">Đồ uống</button>
-            <button type="button" class="customBtn">Alacarte</button>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row flex-column gap-3 align-items-center justify-content-center">
-            <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center align-items-center">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-                <h3 class="menuName my-1">Tên Menu</h3>
-                <h4 class="menuPrice">200.000 VNĐ</h4>
-            </div>
-            <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center align-items-center">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-                <h3 class="menuName my-1">Tên Menu</h3>
-                <h4 class="menuPrice">200.000 VNĐ</h4>
-            </div>
-            <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center align-items-center">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-                <h3 class="menuName my-1">Tên Menu</h3>
-                <h4 class="menuPrice">200.000 VNĐ</h4>
-            </div>
-            <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center align-items-center">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-                <h3 class="menuName my-1">Tên Menu</h3>
-                <h4 class="menuPrice">200.000 VNĐ</h4>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="appDiscount px-2 mt-3 mb-5">
-    <h3 class="titleSections mb-3">Nhà hàng gần bạn</h3>
-    <div class="row flex-column gap-3 align-items-center justify-content-center">
-        <div class="resBox col-sm-6 d-flex align-items-center gap-2">
-            <div class="resImage">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-            </div>
-            <div class="resDesc">
-                <h3 class="resTitle">Lotte Phan văn trị</h3>
-                <p class="resAddress">
-                    <i class="bi bi-geo-alt"></i>
-                    180 Phan Văn Trị, P.15, Q.Bình Thạnh, TP.HCM
-                </p>
-                <p class="resAddress">
-                    <i class="bi bi-telephone-fill"></i>
-                    011.0123.456
-                </p>
+@if(menus != null)
+{
+    <div class="appDiscount px-2 mt-3">
+        <h3 class="titleSections mb-3">Thực đơn</h3>
+        <div class="d-flex justify-content-center align-items-center py-2">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                @foreach(var item in menus.DistinctBy(x => x.menuType))
+                {
+                    <button type="button" @onclick=@(() => selectedMenuCategory = item.menuType) class="customBtn @(item.menuType == selectedMenuCategory ? "activeCustomBtn" : "")">@item.menuType</button>
+                }
             </div>
         </div>
-        <div class="resBox col-sm-6 d-flex align-items-center gap-2">
-            <div class="resImage">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-            </div>
-            <div class="resDesc">
-                <h3 class="resTitle">Lotte Phan văn trị</h3>
-                <p class="resAddress">
-                    <i class="bi bi-geo-alt"></i>
-                    180 Phan Văn Trị, P.15, Q.Bình Thạnh, TP.HCM
-                </p>
-                <p class="resAddress">
-                    <i class="bi bi-telephone-fill"></i>
-                    011.0123.456
-                </p>
-            </div>
-        </div>
-        <div class="resBox col-sm-6 d-flex align-items-center gap-2 mb-5">
-            <div class="resImage">
-                <img src="https://static.gosugamers.net/4e/32/30/d22d99060220cbaa7e353c4ca310166050a0e0151aabd60f7545de3bad.webp?w=1600" alt="">
-            </div>
-            <div class="resDesc">
-                <h3 class="resTitle">Lotte Phan văn trị</h3>
-                <p class="resAddress">
-                    <i class="bi bi-geo-alt"></i>
-                    180 Phan Văn Trị, P.15, Q.Bình Thạnh, TP.HCM
-                </p>
-                <p class="resAddress">
-                    <i class="bi bi-telephone-fill"></i>
-                    011.0123.456
-                </p>
+        <div class="container">
+            <div class="row flex-column gap-3 align-items-center justify-content-center">
+                @foreach (var item in menus.Where(x => x.menuType == selectedMenuCategory))
+                {
+                    <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center align-items-center">
+                        <img src="/images/menus/menu.jpg" alt="">
+                        <h3 class="menuName my-1">@item.menuName</h3>
+                        <h4 class="menuPrice">@item.menuPrice.ToString("N0") VNĐ</h4>
+                    </div>
+                }
             </div>
         </div>
     </div>
-</div>
+}
+
+@if(restaurants != null)
+{
+    <div class="appDiscount px-2 mt-3 mb-5">
+        <h3 class="titleSections mb-3">Nhà hàng gần bạn</h3>
+        <div class="row flex-column gap-3 align-items-center justify-content-center">
+            @foreach(var item in restaurants)
+            {
+                <div class="resBox col-sm-6 d-flex align-items-center gap-2">
+                    <div class="resImage">
+                        <img src="@item.restaurantAvatarLink" alt="">
+                    </div>
+                    <div class="resDesc">
+                        <h3 class="resTitle">@item.restaurantName</h3>
+                        <p class="resAddress">
+                            <i class="bi bi-geo-alt"></i>
+                            @item.restaurantAddress
+                        </p>
+                        <p class="resAddress">
+                            <i class="bi bi-telephone-fill"></i>
+                            @item.restaurantPhone
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

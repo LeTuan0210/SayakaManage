@@ -1,7 +1,15 @@
 ﻿@page "/"
+@inject SeedData _seedService
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<InputFile OnChange="SeedDataAsync" />
 
-Welcome to your new app.
+@code{
+    async Task SeedDataAsync(InputFileChangeEventArgs e)
+    {
+        await _seedService.SeedRestaurants(e.File);
+        await _seedService.SeedPromotion(e.File);
+        await _seedService.SeedMenu(e.File);
+    }
+}

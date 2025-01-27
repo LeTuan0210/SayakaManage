@@ -64,5 +64,14 @@ namespace DataServices.Repository
 
             return true;
         }
+
+        public async Task<List<RestaurantMenu>> CreateListMenuAsync(List<RestaurantMenu> menus)
+        {
+            _context.RestaurantMenus.AddRange(menus);
+
+            await _context.SaveChangesAsync();
+
+            return menus;
+        }
     }
 }

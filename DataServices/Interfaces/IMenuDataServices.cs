@@ -9,6 +9,7 @@ namespace DataServices.Interfaces
         Task<RestaurantMenu> GetMenuAsync(Guid id);
         Task<RestaurantMenu> GetMenuAsync(string alias);
         Task<RestaurantMenu> CreateNewMenuAsync(RestaurantMenu menu);
+        Task<List<RestaurantMenu>> CreateListMenuAsync(List<RestaurantMenu> menus);
         Task<RestaurantMenu> UpdateMenuAsync(RestaurantMenu menu);
         Task<bool> DeleteMenuAsync(Guid id);
     }

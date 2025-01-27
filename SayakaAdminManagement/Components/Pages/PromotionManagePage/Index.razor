@@ -1,0 +1,62 @@
+﻿@page "/promotions"
+
+@inject ISystemPromotionServerServices _promotionService
+
+<PageTitle>Khuyến mãi</PageTitle>
+
+<RadzenText TextStyle="TextStyle.DisplayH3" TextAlign="TextAlign.Center">Khuyến Mãi</RadzenText>
+<RadzenButton Icon="plus" ButtonStyle="ButtonStyle.Success">Thêm Nhà Hàng</RadzenButton>
+
+@if(promotions != null)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th style="width: 5%">
+
+                </th>
+                <th>
+                    Tên Khuyến Mãi
+                </th>
+                <th>
+                    Content
+                </th>
+                <th>
+                    Ngày tạo
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in promotions)
+            {
+                <tr>
+                    <td>
+                        <RadzenImage Path="@item.imageBannerLink" class="rz-gravatar" />
+                    </td>
+                    <td>
+                        @item.promotionName
+                    </td>
+                    <td>
+                        @item.promotionContent
+                    </td>
+                    <td>
+                        @item.createDate
+                    </td>
+                    <td>
+                        <RadzenButton Icon="edit" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+
+    List<SystemPromotionResponseModel> promotions { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        promotions = await _promotionService.GetAllPromotionAsync(new PromotionFilter());
+    }
+}

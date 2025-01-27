@@ -95,5 +95,14 @@ namespace DataServices.Repository
 
             return true;
         }
+
+        public async Task<List<SystemPromotion>> CreateListPromotion(List<SystemPromotion> promotions)
+        {
+            _context.SystemPromotions.AddRange(promotions);
+
+            await _context.SaveChangesAsync();
+            
+            return promotions;
+        }
     }
 }

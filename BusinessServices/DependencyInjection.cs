@@ -1,4 +1,5 @@
 ﻿using BusinessServices.AutoMapperProfile;
+using BusinessServices.Extensions;
 using BusinessServices.Repositories;
 using BusinessServices.Repositories;
 using BusinessServices.Repositories;
@@ -12,6 +13,7 @@ namespace BusinessServices
         public static void AddBusinessServices(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(SystemPromotionMapperProfile).Assembly);
+            services.AddScoped<SeedData>();
 
             // Promotion
 

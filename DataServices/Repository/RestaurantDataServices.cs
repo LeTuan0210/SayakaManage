@@ -17,7 +17,7 @@ namespace DataServices.Repository
         public Task<List<RestaurantInfo>> GetAllRestaurantAsync(RestaurantFilter filter)
         {
             var query = _context.RestaurantInfos.AsQueryable();
-            var result = query.OrderBy(x => x.restaurantAreaId).Skip(filter.skipItem).Take(filter.PageSize).ToListAsync();
+            var result = query.OrderByDescending(x => x.restaurantArea).Skip(filter.skipItem).Take(filter.PageSize).ToListAsync();
             return result;
         }
 
@@ -61,6 +61,15 @@ namespace DataServices.Repository
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<List<RestaurantInfo>> CreateListRestaurants(List<RestaurantInfo> listRestaurants)
+        {
+            _context.AddRange(listRestaurants);
+
+            await _context.SaveChangesAsync();
+            
+            return listRestaurants;
         }
     }
 }
