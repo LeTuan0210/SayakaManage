@@ -97,21 +97,23 @@
         <div class="row flex-column gap-3 align-items-center justify-content-center">
             @foreach(var item in restaurants)
             {
-                <div @onclick="@(() => navigation.NavigateTo($"/restaurants/{item.restaurantAliasName}"))" class="resBox col-sm-6 d-flex align-items-center gap-2">
-                    <div class="resImage">
-                        <img src="@item.restaurantAvatarLink" alt="">
-                    </div>
-                    <div class="resDesc">
-                        <h3 class="resTitle">@item.restaurantName</h3>
-                        <p class="resAddress">
-                            <i class="bi bi-geo-alt"></i>
-                            @item.restaurantAddress
-                        </p>
-                        <p class="resAddress">
-                            <i class="bi bi-telephone-fill"></i>
-                            @item.restaurantPhone
-                        </p>
-                    </div>
+                <div @onclick="@(() => navigation.NavigateTo($"/restaurants/{item.restaurantAliasName}"))" class="container">
+                   <div class="row d-flex justify-content-start align-items-center px-3">
+                        <div class="resImage col-3">
+                            <img src="@item.restaurantAvatarLink" alt="" class="w-100 h-100">
+                        </div>
+                        <div class="resDesc col-9">
+                            <h3 class="resTitle">@item.restaurantName</h3>
+                            <p class="resAddress">
+                                <i class="bi bi-geo-alt"></i>
+                                @item.restaurantAddress
+                            </p>
+                            <p class="resAddress">
+                                <i class="bi bi-telephone-fill"></i>
+                                @item.restaurantPhone
+                            </p>
+                        </div>
+                   </div>
                 </div>
             }
         </div>

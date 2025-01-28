@@ -136,9 +136,11 @@ img{
 }
 
 .resImage{
-    width: 80px;
+    width: 70px;
     height: 80px;
     border-radius: 5px;
+    padding: 0;
+    margin: 0;
 }
 
 .resImage img{
@@ -146,7 +148,6 @@ img{
     height: 100%;
     border-radius: 5px;
     object-fit: cover;
-    object-position: center;
 }
 
 .resTitle{
@@ -297,7 +298,7 @@ img{
 }
 
 .resItem{
-    margin-top: 45%;
+    margin-top: 15px;
     margin-bottom: 20%;
 }
 
@@ -336,4 +337,8 @@ img{
 .labelForm input{
     font-size: 12px;
     font-weight: 400;
+}
+
+.appDiscount{
+    margin-bottom: 150px;
 }
