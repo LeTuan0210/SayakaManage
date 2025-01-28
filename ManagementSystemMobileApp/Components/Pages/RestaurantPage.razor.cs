@@ -1,4 +1,5 @@
-﻿using BusinessServices.Repositories;
+﻿using BusinessServices.Extensions;
+using BusinessServices.Repositories;
 using DataModels.Filter;
 using DataViewModels.Responses;
 using Microsoft.AspNetCore.Components;
@@ -13,6 +14,8 @@ namespace ManagementSystemMobileApp.Components.Pages
         protected NavigationManager navigation { get; set; } // Quản lý chuyển trang
         [Inject]
         protected IRestaurantClientServices _restaurantServices { get; set; }
+        [Inject]
+        protected LocationServices _locationServices { get; set; }
         #endregion
 
         // Variable
@@ -28,6 +31,11 @@ namespace ManagementSystemMobileApp.Components.Pages
         protected override async Task OnInitializedAsync() // Hàm Khởi tạo, Load Data
         {
             restaurants = await _restaurantServices.GetAllRestaurantsAsync(new RestaurantFilter { PageSize = 100 });
+        }
+
+        async Task GetLocation()
+        {
+            await _locationServices.GetLocation();
         }
         #endregion
     }

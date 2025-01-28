@@ -14,6 +14,7 @@ namespace BusinessServices
         {
             services.AddAutoMapper(typeof(SystemPromotionMapperProfile).Assembly);
             services.AddScoped<SeedData>();
+            services.AddScoped<LocationServices>();
 
             // Promotion
 
