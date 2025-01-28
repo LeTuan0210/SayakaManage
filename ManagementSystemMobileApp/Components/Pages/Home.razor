@@ -42,7 +42,7 @@
             {
                 @foreach(var item in promotions)
                 {
-                    <div class="carousel-item @(promotions.IndexOf(item) == 0 ? "active" : "")">
+                    <div @onclick="@(() => navigation.NavigateTo($"/promotions/{item.promotionAlias}"))" class="carousel-item @(promotions.IndexOf(item) == 0 ? "active" : "")">
                         <img src="@item.imageBannerLink" class="d-block w-100" alt="Slide 1">
                         <h2 class="discountTitle">@item.promotionName</h2>
                     </div>
@@ -97,7 +97,7 @@
         <div class="row flex-column gap-3 align-items-center justify-content-center">
             @foreach(var item in restaurants)
             {
-                <div class="resBox col-sm-6 d-flex align-items-center gap-2">
+                <div @onclick="@(() => navigation.NavigateTo($"/restaurants/{item.restaurantAliasName}"))" class="resBox col-sm-6 d-flex align-items-center gap-2">
                     <div class="resImage">
                         <img src="@item.restaurantAvatarLink" alt="">
                     </div>

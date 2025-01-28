@@ -1,0 +1,51 @@
+﻿@page "/promotions/{promotionAlias}"
+
+<PageTitle>Khuyến mãi Sayaka</PageTitle>
+
+@if(promotion != null)
+{
+    <div class="container">
+        <div class="headeDetail">
+            <img src="@promotion.imageBannerLink"
+            alt="">
+            <h1>@promotion.promotionName</h1>
+            <p>Ngày đăng: @promotion.createDate.ToString("dd/MM/yyyy")</p>
+        </div>
+        <div class="descDetail">
+            @promotion.promotionContent
+        </div>
+    </div>
+
+    <div class="appDiscount px-2 mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="titleSections mb-3">Khuyến mãi</h3>
+            <div @onclick="@(() => navigation.NavigateTo($"/promotions"))" class="boxIconCustom d-flex justify-content-center align-items-center">
+                <i class="bi bi-arrow-right"></i>
+            </div>
+        </div>
+        @if(promotions != null)
+        {
+            <div id="listDiscountSameAs" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    @foreach (var item in promotions)
+                    {
+                        <div @onclick="@(() => navigation.NavigateTo($"/promotions/{item.promotionAlias}"))" class="carousel-item @(promotions.IndexOf(item) == 0 ? "active" : "")">
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <div class="resImage">
+                                    <img src="@item.imageBannerLink"
+                                         alt="">
+                                </div>
+                                <div class="resDesc">
+                                    <h3 class="resTitle">@item.promotionName</h3>
+                                    <p class="resAddress">
+                                        @item.promotionContent
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}

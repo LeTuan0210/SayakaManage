@@ -1,0 +1,34 @@
+﻿@page "/promotions"
+
+@if(promotions != null)
+{
+    <div class="container-fluid m-0 p-0">
+        <div class="discountCustom d-flex justify-content-center align-items-center">
+            <p class="titleCustom">Danh sách khuyến mãi</p>
+        </div>
+    </div>
+
+    <div class="appDiscount px-2 mt-3">
+        <div class="container">
+            <div class="row flex-column gap-3 align-items-center justify-content-center">
+                @foreach(var item in promotions)
+                {
+
+                    <div @onclick="@(() => navigation.NavigateTo($"/promotions/{item.promotionAlias}"))" class="boxMenu col-sm-6 d-flex flex-column justify-content-center">
+                        <img src="@item.imageBannerLink"
+                             alt="">
+                        <h3 class="discountName my-1">@item.promotionName</h3>
+                        <h4 class="disountDay">@item.createDate.ToString("dd/MM/yyyy")</h4>
+                        <p class="discoutDesc">
+                            @item.promotionContent
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+
+}

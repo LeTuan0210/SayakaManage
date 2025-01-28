@@ -11,5 +11,8 @@
         public string restaurantArea { get; set; }
         public string restaurantCity { get; set; } = "Updating";
         public string restaurantAvatarLink { get; set; } = "/images/restaurants/nha-hang.jpg";
+        public double restaurantLatitude { get; set; } = 0;
+        public double restaurantLongitude { get; set; } = 0;
+        public string restaurantEmbedMap { get; set; } = "";
     }
 }

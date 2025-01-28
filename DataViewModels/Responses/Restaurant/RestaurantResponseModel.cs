@@ -11,5 +11,8 @@
         public string restaurantArea { get; set; }
         public string restaurantCity { get; set; }
         public string restaurantAvatarLink { get; set; }
+        public double restaurantLatitude { get; set; }
+        public double restaurantLongitude { get; set; }
+        public string restaurantEmbedMap { get; set; }
     }
 }

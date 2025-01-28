@@ -1,0 +1,94 @@
+﻿@page "/restaurants/{restaurantAlias}"
+
+<PageTitle>Nhà hàng Sayaka</PageTitle>
+
+@if(restaurant != null)
+{
+    <div class="marginBootom">
+
+        <div class="container">
+            <img src="@restaurant.restaurantAvatarLink"
+                 alt="">
+        </div>
+
+        <div class="container mt-3 mb-4">
+            <h3 class="titleSections mb-3">@restaurant.restaurantName</h3>
+            <div class="resDetailDesc my-3">
+                @restaurant.restaurantDescription
+            </div>
+
+            <ul class="listContact d-flex flex-column gap-2">
+                <li class="contactItem d-flex align-items-center gap-1">
+                    <div class="conactIcon">
+                        <i class="bi bi-clock-fill"></i>
+                    </div>
+                    <p class="listText">Phản hồi trong 1 giờ</p>
+                </li>
+                <li class="contactItem d-flex align-items-center gap-1">
+                    <div class="conactIcon">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+                    <p class="listText">@restaurant.restaurantAddress</p>
+                </li>
+                <li class="contactItem d-flex align-items-center gap-1">
+                    <div class="conactIcon">
+                        <i class="bi bi-telephone-inbound-fill"></i>
+                    </div>
+                    <p class="listText">@restaurant.restaurantPhone</p>
+                </li>
+                <li class="contactItem d-flex align-items-center gap-1">
+                    <div class="conactIcon">
+                        <i class="bi bi-alarm-fill"></i>
+                    </div>
+                    <p class="listText">Mở cửa lúc 10h</p>
+                </li>
+            </ul>
+            <button class="btn btn-primary mt-3">Đặt bàn ngay</button>
+        </div>
+        <div class="container">
+            <h3 class="titleSections mb-3">Vị trí</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8001847327896!2d106.36136797462062!3d10.357855989766591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310aaf1a5aee08f1%3A0xc73d92afc9ecab44!2zU2F5YWthIEJ1ZmZldCBOxrDhu5tuZyBM4bqpdSBWaW5jb20gTeG7uSBUaG8!5e0!3m2!1svi!2s!4v1738039091026!5m2!1svi!2s"
+                    class="frameMap" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="container mt-3 mb-5">
+            <h3 class="titleSections mb-3">Thư viện</h3>
+            <div class="mt-3 mb-5">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Xem hình ảnh
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                             data-bs-parent="#accordionExample">
+                            <div class="container">
+                                <div class="row flex-column gap-3 align-items-center justify-content-center">
+                                    <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center">
+                                        <img src="@restaurant.restaurantAvatarLink"
+                                             alt="">
+                                    </div>
+                                    <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center">
+                                        <img src="@restaurant.restaurantAvatarLink"
+                                             alt="">
+                                    </div>
+                                    <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center">
+                                        <img src="@restaurant.restaurantAvatarLink"
+                                             alt="">
+                                    </div>
+                                    <div class="boxMenu col-sm-6 d-flex flex-column justify-content-center">
+                                        <img src="@restaurant.restaurantAvatarLink"
+                                             alt="">
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,11 +1,12 @@
-﻿<!-- Header -->
+﻿@inject NavigationManager navigation
+<!-- Header -->
 <div class="header container-fluid p-0 m-0 ">
     <div class="py-1">
         <div class="container d-flex justify-content-center align-items-center gap-2">
-            <div class="menuIcon">
+            <div @onclick="@(() => navigation.NavigateTo("/"))" class="menuIcon">
                 <i class="bi bi-house-door-fill"></i>
             </div>
-            <div class="menuIcon">
+            <div @onclick="@(() => navigation.NavigateTo("/promotions"))" class="menuIcon">
                 <i class="bi bi-ticket-perforated-fill"></i>
             </div>
             <div class="menuIcon">
