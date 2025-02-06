@@ -1,15 +1,20 @@
 ﻿@page "/"
+
 <PageTitle>Home Page</PageTitle>
+
 <div class="appContainer">
     <!-- Session 1 -->
-    <div class="container my-5">
-        <div class="headerApp d-flex flex-column justify-content-center align-items-center gap-3">
-            <div class="imageCustomer">
-                <img src="./image/user-icon.webp" alt="">
+    @if(member != null)
+    {
+        <div class="container my-5">
+            <div class="headerApp d-flex flex-column justify-content-center align-items-center gap-3">
+                <div class="imageCustomer">
+                    <img src="./image/user-icon.webp" alt="">
+                </div>
+                <h1 class="nameUser">@member.name</h1>
             </div>
-            <h1 class="nameUser">Demo user</h1>
         </div>
-    </div>
+    }
     <!-- Session 1 -->
     <div class="appMenu px-2">
         <div class="container ">

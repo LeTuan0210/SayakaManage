@@ -179,5 +179,9 @@ namespace BusinessServices.Extensions
                 return null;
             }
         }
+        public async Task<List<ZaloToken>> SeedZaloToken()
+        {
+            return new List<ZaloToken> { new ZaloToken() };
+        }
     }
 }

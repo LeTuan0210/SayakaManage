@@ -1,9 +1,6 @@
 ﻿using BusinessServices.AutoMapperProfile;
 using BusinessServices.Extensions;
 using BusinessServices.Repositories;
-using BusinessServices.Repositories;
-using BusinessServices.Repositories;
-using BusinessServices.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessServices
@@ -38,6 +35,10 @@ namespace BusinessServices
 
             services.AddScoped<IRestaurantAreaBaseServices, RestaurantAreaBaseServices>();
             services.AddScoped<IRestaurantAreaServerServices, RestaurantAreaServerServices>();
+
+            // Member Services
+
+            services.AddScoped<IMemberClientServices, MemberClientServices>();
         }
     }
 }

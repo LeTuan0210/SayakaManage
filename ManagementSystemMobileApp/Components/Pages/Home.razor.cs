@@ -1,5 +1,6 @@
 ﻿using BusinessServices.Repositories;
 using DataModels.Filter;
+using DataViewModels.Requests;
 using DataViewModels.Responses;
 using Microsoft.AspNetCore.Components;
 
@@ -17,6 +18,8 @@ namespace ManagementSystemMobileApp.Components.Pages
         protected IRestaurantClientServices _restaurantServices { get; set; }
         [Inject]
         protected IMenuClientServices _menuServices { get; set; }
+        [Inject]
+        protected IMemberClientServices _memberServices { get; set; }
         #endregion
 
         // Variable
@@ -25,6 +28,8 @@ namespace ManagementSystemMobileApp.Components.Pages
         List<RestaurantResponseModel> restaurants { get; set; } // Danh sách Nhà hàng
         List<MenuResponseModel> menus { get; set; } // Danh sach Menu
         string selectedMenuCategory { get; set; } = "Buffet";
+
+        MemberAppInfo? member;
 
         #endregion
 
@@ -35,6 +40,8 @@ namespace ManagementSystemMobileApp.Components.Pages
             promotions = await _promotionServices.GetAllPromotionAsync(new PromotionFilter());
             restaurants = await _restaurantServices.GetAllRestaurantsAsync(new RestaurantFilter { PageSize = 100});
             menus = await _menuServices.GetAllMenuAsync(new MenuFilter());
+            member = await _memberServices.GetMemberInfo();
+            StateHasChanged();
         }
         void ChangePage(string page)
         {

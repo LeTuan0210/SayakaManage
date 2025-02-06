@@ -1,0 +1,32 @@
+﻿@page "/login"
+@inject IMemberClientServices memberServices
+@inject NavigationManager Navigation
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+
+        var queryParams = QueryHelpers.ParseQuery(uri.Query)
+                                  .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString());
+
+        try
+        {
+            await memberServices.AuthenticationMember(queryParams["code"]);
+
+            if (memberServices.IsAuthenticate())
+                Navigation.NavigateTo(Navigation.BaseUri);
+        }
+        catch
+        {
+            Navigation.NavigateTo("/member/not_found");
+        }
+    }
+}

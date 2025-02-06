@@ -4,6 +4,7 @@ using DataServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataServices.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250201071115_AddMemberRestaurant")]
+    partial class AddMemberRestaurant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,12 +46,6 @@ namespace DataServices.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("canEditPhone")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("memberBirthday")
                         .HasColumnType("datetime2");
 
@@ -57,10 +54,6 @@ namespace DataServices.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("memberName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("memberPhone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -217,23 +210,6 @@ namespace DataServices.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SystemPromotions");
-                });
-
-            modelBuilder.Entity("DataModels.Entities.ZaloToken", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("expireTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("tokenValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ZaloTokens");
                 });
 
             modelBuilder.Entity("DataServices.ApplicationUser", b =>

@@ -19,7 +19,7 @@
             <h3 class="discountName my-1">Tỉnh, Thành phố</h3>
             <InputSelect @bind-Value="selectedCity" class="form-select" aria-label="Default select example">
                 <option value="" selected>Tất cả</option>
-                @foreach(var item in restaurants.Where(x => x.restaurantArea.Contains(selectedArea)).DistinctBy(x => x.restaurantCity))
+                @foreach(var item in restaurants.Where(x => x.restaurantArea.Contains(selectedArea)).DistinctBy(x => x.restaurantCity).OrderBy(x => x.restaurantCity))
                 {
                     <option value="@item.restaurantCity">@item.restaurantCity</option>
                 }
