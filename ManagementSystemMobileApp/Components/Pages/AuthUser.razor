@@ -7,7 +7,7 @@
     {
         if(firstRender)
         {
-            
+
         }
     }
     protected override async Task OnInitializedAsync()
@@ -21,8 +21,7 @@
         {
             await memberServices.AuthenticationMember(queryParams["code"]);
 
-            if (memberServices.IsAuthenticate())
-                Navigation.NavigateTo(Navigation.BaseUri);
+            Navigation.NavigateTo(Navigation.BaseUri);
         }
         catch
         {

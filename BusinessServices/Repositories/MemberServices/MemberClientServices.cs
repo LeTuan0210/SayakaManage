@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
+using System.Reflection;
 
 namespace BusinessServices.Repositories
 {
@@ -19,19 +20,28 @@ namespace BusinessServices.Repositories
 
         private readonly IMapper _mapper;
 
+        private readonly IZaloTokenDataServices _tokenDataServices;
+
         ProtectedLocalStorage _storage;
         MemberResponseModel? _memberInfo { get; set; }
-        public MemberClientServices(IWebHostEnvironment env, IConfiguration configuration, ProtectedLocalStorage storage, IMemberDataServices memberDataServices, IMapper mapper)
+        public MemberClientServices(IWebHostEnvironment env,
+                                    IConfiguration configuration,
+                                    ProtectedLocalStorage storage,
+                                    IMemberDataServices memberDataServices,
+                                    IMapper mapper,
+                                    IZaloTokenDataServices tokenDataServices)
         {
             _env = env;
             _configuration = configuration;
             _storage = storage;
             _memberDataServices = memberDataServices;
             _mapper = mapper;
+            _tokenDataServices = tokenDataServices;
         }
         //Authorize User
 
         #region
+        // Get User AccessToken
         private async Task<MemberAccessTokenModel> GetUserAccessToken(string authorizeCode)
         {
             using (var client = new HttpClient())
@@ -63,6 +73,8 @@ namespace BusinessServices.Repositories
                 return token_Result;
             }
         }
+
+        // From Access Token, Get Member Infomation By Zalo App
         private async Task<MemberAppInfo> GetMemberInfomation(string accessToken)
         {
             using (var client = new HttpClient())
@@ -85,6 +97,7 @@ namespace BusinessServices.Repositories
                 if (result.Success)
                 {
                     _memberInfo = result.Value;
+                    if(!string.IsNullOrEmpty(_memberInfo.memberName))
                     return;
                 }
 
@@ -95,7 +108,9 @@ namespace BusinessServices.Repositories
                 var member = await _memberDataServices.GetMemberAsync(userInfo.id);
 
                 if (member == null)
+                {                    
                     return;
+                }
 
                 _memberInfo = _mapper.Map<MemberResponseModel>(member);
 

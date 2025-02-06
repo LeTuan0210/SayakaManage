@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using DataModels.Entities;
+using DataViewModels.Requests.MemberInfo;
 using DataViewModels.Responses;
-using System.Reflection;
 
 namespace BusinessServices.AutoMapperProfile
 {
@@ -9,6 +10,9 @@ namespace BusinessServices.AutoMapperProfile
         public MemberMapperProfile()
         {
             CreateMap<MemberInfo, MemberResponseModel>();
+
+            CreateMap<CreateMemberModel, MemberInfo>()
+                .ForMember(x => x.favouriteRestaurant, src => src.MapFrom(x => new List<RestaurantInfo>()));
         }
     }
 }

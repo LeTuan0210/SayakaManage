@@ -1,0 +1,27 @@
+﻿
+@using BusinessServices.Extensions
+@inject SeedData seed
+
+<button @onclick=SeedMember>Seed</button>
+
+@if(members != null)
+{
+    @foreach (var item in members.Where(x => !string.IsNullOrEmpty(x.phone) && !string.IsNullOrEmpty(x.birthday)))
+    {
+        <p class="text-success">@item.id - @item.phone - @(item.birthday)</p>
+    }
+
+    @foreach (var item in members.Where(x => string.IsNullOrEmpty(x.phone) || string.IsNullOrEmpty(x.birthday)))
+    {
+        <p>@item.id - @item.phone - @(item.birthday)</p>
+    }
+}
+
+@code {
+    List<MemberSayaka> members;
+    async Task SeedMember()
+    {
+        members = await seed.SeedMember();
+        StateHasChanged();
+    }
+}

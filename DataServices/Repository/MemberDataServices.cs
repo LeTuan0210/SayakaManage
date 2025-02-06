@@ -12,9 +12,13 @@ namespace DataServices.Repository
             throw new NotImplementedException();
         }
 
-        public Task<MemberInfo> CreateNewMemberAsync(MemberInfo member)
+        public async Task<MemberInfo> CreateNewMemberAsync(MemberInfo member)
         {
-            throw new NotImplementedException();
+            _context.MemberInfos.Add(member);
+
+            await _context.SaveChangesAsync();
+
+            return member;
         }
 
         public Task<bool> DeleteMemberAsync(Guid id)
@@ -22,14 +26,15 @@ namespace DataServices.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<MemberInfo>> GetAllMenuAsync(MenuFilter filter)
+        public async Task<List<MemberInfo>> GetAllMenuAsync(MenuFilter filter)
         {
-            throw new NotImplementedException();
+            return await _context.MemberInfos.ToListAsync();
         }
 
-        public Task<MemberInfo> GetMemberAsync(Guid id)
+        public async Task<MemberInfo> GetMemberAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var member = await _context.MemberInfos.FirstOrDefaultAsync(x => x.Id == id);
+            return member;
         }
 
         public async Task<MemberInfo> GetMemberAsync(string user_id_by_app)
@@ -39,9 +44,11 @@ namespace DataServices.Repository
             return member;
         }
 
-        public Task<MemberInfo> UpdateMemberAsync(MemberInfo menu)
+        public async Task<MemberInfo> UpdateMemberAsync(MemberInfo menu)
         {
-            throw new NotImplementedException();
+            _context.MemberInfos.Update(menu);
+            await _context.SaveChangesAsync();
+            return menu;
         }
     }
 }

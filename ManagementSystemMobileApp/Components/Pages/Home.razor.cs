@@ -29,7 +29,7 @@ namespace ManagementSystemMobileApp.Components.Pages
         List<MenuResponseModel> menus { get; set; } // Danh sach Menu
         string selectedMenuCategory { get; set; } = "Buffet";
 
-        MemberAppInfo? member;
+        MemberResponseModel? member;
 
         #endregion
 

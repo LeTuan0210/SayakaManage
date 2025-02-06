@@ -1,6 +1,7 @@
 ﻿using BusinessServices.AutoMapperProfile;
 using BusinessServices.Extensions;
 using BusinessServices.Repositories;
+using BusinessServices.Repositories.MemberServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessServices
@@ -38,7 +39,13 @@ namespace BusinessServices
 
             // Member Services
 
+            services.AddScoped<IMemberBaseServices, MemberBaseServices>();
             services.AddScoped<IMemberClientServices, MemberClientServices>();
+            services.AddScoped<IMemberAdminServices, MemberAdminServices>();
+
+            // Zalo Token Services
+
+            services.AddScoped<IZaloTokenServices, ZaloTokenServices>();
         }
     }
 }

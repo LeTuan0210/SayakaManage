@@ -11,22 +11,22 @@
             @foreach(var group in restaurants.GroupBy(x => x.restaurantArea))
             {
                 <RadzenTabsItem Text="@group.Key">
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>
+                                <th style="width: 10%">
 
                                 </th>
-                                <th style="width: 25%">
+                                <th style="width: 30%">
                                     Tên
                                 </th>
-                                <th style="width: 25%">
+                                <th style="width: 20%">
                                     Tỉnh
                                 </th>
-                                <th style="width: 25%">
+                                <th style="width: 30%">
                                     Số điện thoại
                                 </th>
-                                <th style="width: 25%"></th>
+                                <th style="width: 10%"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,7 @@
                             {
                                 <tr>
                                     <td>
-                                        <RadzenGravatar Email="@item.restaurantAvatarLink" />
+                                        <RadzenImage Path="@item.restaurantAvatarLink" class="rz-gravatar" />
                                     </td>
                                     <td>
                                         @item.restaurantName

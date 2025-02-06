@@ -11,11 +11,11 @@
         <RadzenPanelMenu>
             <RadzenPanelMenuItem Path="/" Text="Trang chủ" />
             <RadzenPanelMenuItem Path="/restaurants" Text="Nhà hàng" />
-            <RadzenPanelMenuItem Path="/menus" Text="Menu" />            
+            @* <RadzenPanelMenuItem Path="/menus" Text="Menu" /> *@            
             <RadzenPanelMenuItem Path="/promotions" Text="Khuyến mãi" />
-            <RadzenPanelMenuItem Path="/admin/Blogs" Text="Blogs" />
+           @*  <RadzenPanelMenuItem Path="/admin/Blogs" Text="Blogs" />
             <RadzenPanelMenuItem Path="/admin/support-requests" Text="Support Request" />
-            <RadzenPanelMenuItem Path="/admin/web-details" Text="Web Details" />           
+            <RadzenPanelMenuItem Path="/admin/web-details" Text="Web Details" /> *@           
             <AuthorizeView Roles="admin">
                 <Authorized>
                     <RadzenPanelMenuItem Path="/admin/users" Text="Account" />

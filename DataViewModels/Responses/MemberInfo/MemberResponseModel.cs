@@ -2,7 +2,6 @@
 {
     public class MemberResponseModel
     {
-        public Guid Id { get; set; }
         public string user_Id { get; set; }
         public string user_Id_By_App { get; set; }
         public string memberName { get; set; }
