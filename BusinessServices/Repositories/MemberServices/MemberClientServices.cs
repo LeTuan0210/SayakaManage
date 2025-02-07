@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
+using DataModels.Entities;
 using DataServices.Interfaces;
 using DataViewModels.Requests;
 using DataViewModels.Responses;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
-using System.Reflection;
 
 namespace BusinessServices.Repositories
 {
@@ -94,18 +95,22 @@ namespace BusinessServices.Repositories
             {
                 var result = await _storage.GetAsync<MemberResponseModel>("user_member");
 
+                MemberInfo? member;
+
                 if (result.Success)
                 {
                     _memberInfo = result.Value;
-                    if(!string.IsNullOrEmpty(_memberInfo.memberName))
-                    return;
+
+                    member = await _memberDataServices.GetMemberAsync(_memberInfo.user_Id_By_App);
                 }
+                else
+                {
+                    var token_Result = await GetUserAccessToken(authorizeCode);
 
-                var token_Result = await GetUserAccessToken(authorizeCode);
+                    var userInfo = await GetMemberInfomation(token_Result.access_token);
 
-                var userInfo = await GetMemberInfomation(token_Result.access_token);
-
-                var member = await _memberDataServices.GetMemberAsync(userInfo.id);
+                    member = await _memberDataServices.GetMemberAsync(userInfo.id);
+                }  
 
                 if (member == null)
                 {                    
@@ -128,9 +133,29 @@ namespace BusinessServices.Repositories
             return _memberInfo != null ? true : false;
         }        
 
-        public Task<UpdateMemberModel> GetUpdateMemberModel()
+        public async Task<UpdateMemberModel> GetUpdateMemberModel()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await AuthenticationMember();
+
+                if (_memberInfo == null || string.IsNullOrEmpty(_memberInfo.user_Id_By_App))
+                    return null;
+
+                var result = await _memberDataServices.GetMemberAsync(_memberInfo.user_Id_By_App);
+
+                if(result != null)
+                {
+                    return _mapper.Map<UpdateMemberModel>(result);
+                }    
+
+                return null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public Task<MemberResponseModel> ChangeFavouriteRestaurant(Guid restaurantId, bool status)
@@ -138,9 +163,31 @@ namespace BusinessServices.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<MemberResponseModel> UpdateMemberInfoByUser(UpdateMemberModel model)
+        public async Task<MemberResponseModel> UpdateMemberInfoByUser(UpdateMemberModel model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var updateMember = await _memberDataServices.GetMemberAsync(_memberInfo.user_Id_By_App);
+
+                _mapper.Map(model, updateMember);
+
+                updateMember = await _memberDataServices.UpdateMemberAsync(updateMember);
+
+                if (updateMember != null)
+                {
+                    _memberInfo = _mapper.Map<MemberResponseModel>(updateMember);
+
+                    return _memberInfo;
+                }                
+
+                return null;
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public async Task<MemberResponseModel> GetMemberInfo()

@@ -185,95 +185,124 @@ namespace BusinessServices.Extensions
                 return null;
             }
         }
-        public async Task<List<MemberSayaka>> SeedMember()
+        public async Task SeedMember()
         {
-            List<MemberSayaka> members;
             using (var httpclient = new HttpClient())
             {
-                members = await httpclient.GetFromJsonAsync<List<MemberSayaka>>("https://sayaka.vn/api/zalo/getmember");
-            }
+                var listMember = await httpclient.GetFromJsonAsync<List<SayakaMember>>("https://sayaka.vn/api/zalo/getmember");
 
-            foreach (var item in members)
-            {
-                var memberInfo = await _memberService.GetMemberAsync(item.id);
+                var listSystemMember = await _memberService.GetAllMenuAsync(new DataModels.Filter.MenuFilter());
 
-                if (memberInfo != null)
+                foreach(var item in listSystemMember)
                 {
-                    if(DateTime.TryParseExact(item.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime cusBirthday))
+                    try
                     {
-                        memberInfo.memberBirthday = cusBirthday;
-                        await _memberService.UpdateMemberAsync(memberInfo);
-                    }    
+                        var member = listMember.FirstOrDefault(x => x.id == item.user_Id);
 
-                }    
-                
-                //string accesstoken = "MLryB-Gpx3PPNdqdwJNeFb5UVItkAEzWAZW72i1PaqjzH0CSaL_WIY1z4GlOREzRE68P2jjf_M8gO0mQr7RaTYHfV3pVM-bxD5f_AlfMf4T3NM1KXMgB16S2PcZP48PuAXng89ChXcjTAHKvhYZLKMCf6W6-6FrLJpaO1geDxrSIDmOSxHNrLLq5PX6n9Py7Vr18QiTkf2GROaynt4sjMYzINpN7NQr-ArHTQ9DTdYbLN5CykZocKNuXG2Qc3x8tMJ8YHULSnWC1JZ9wwLdV3LHi7MALGkmLVK8AR9TjyYWlQXivuLt-IWHaEWxz2gjwE3HOFVabmImI9IvKoZhX40iG45xd98WL5Z5k1CWScHGiBLDCyGMXNnvlJKxxNO4cHZnaPuiXYoLZ6crKk7E6BGDjP4PBYLYX8EGhx3y";
-                
-                //using (var httpclient = new HttpClient())
-                //{
-                //    httpclient.DefaultRequestHeaders.Add("access_token", accesstoken);
+                        if (member != null)
+                        {
+                            item.memberPhone = member.phone;
+                        }
 
-                //    string Endpoint = $"https://openapi.zalo.me/v3.0/oa/user/detail?data={{\"user_id\":\"{item.id}\"}}";
+                        if (item.memberPhone.StartsWith("84") && item.memberPhone.Length == 11)
+                        {
+                            item.memberPhone = "0" + item.memberPhone.Substring(2);
+                        }
 
-                //    var response = await httpclient.GetAsync(Endpoint);
+                        await _memberService.UpdateMemberAsync(item);
+                    }
+                    catch
+                    {
 
-                //    if(response.IsSuccessStatusCode)
-                //    {
-                //        var followInfo = await response.Content.ReadFromJsonAsync<ZaloOAUserDetailModel>();
-
-                //        if (followInfo.error == 0)
-                //        {
-                //            var createUserModel = new CreateMemberModel
-                //            {
-                //                user_Id = followInfo.data.user_id,
-                //                user_Id_By_App = followInfo.data.user_id_by_app,
-                //                memberName = followInfo.data.display_name,
-                //                isActive = followInfo.data.user_is_follower,
-                //            };
-
-                //            var newMember = await _memberService.CreateNewMemberAsync(_mapper.Map<MemberInfo>(createUserModel));
-
-                //            if (newMember == null)
-                //                Console.WriteLine(item.id);
-
-                //            var rateLimitRemainValues = response.Headers.GetValues("X-RateLimit-Remain");
-
-                //            if (response.Headers.Contains("X-RateLimit-Remain"))
-                //            {
-                //                foreach (var value in rateLimitRemainValues)
-                //                {
-                //                    if (int.TryParse(value, out int rateLimitRemain))
-                //                    {
-                //                        Console.WriteLine($"X-RateLimit-Remain: {rateLimitRemain}");
-                //                        if (rateLimitRemain <= 10)
-                //                            await Task.Delay(60000);
-                //                    }
-                //                    else
-                //                    {
-                //                        Console.WriteLine($"Không thể chuyển đổi giá trị '{value}' sang số nguyên.");
-                //                    }
-                //                }
-                //            }
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine(item.id);
-                //    }
-                    
-                 
+                    }
+                }
             }
+            //for (int i = 0; i < 6200; i += 50)
+            //{
+            //    string accesstoken = "MLryB-Gpx3PPNdqdwJNeFb5UVItkAEzWAZW72i1PaqjzH0CSaL_WIY1z4GlOREzRE68P2jjf_M8gO0mQr7RaTYHfV3pVM-bxD5f_AlfMf4T3NM1KXMgB16S2PcZP48PuAXng89ChXcjTAHKvhYZLKMCf6W6-6FrLJpaO1geDxrSIDmOSxHNrLLq5PX6n9Py7Vr18QiTkf2GROaynt4sjMYzINpN7NQr-ArHTQ9DTdYbLN5CykZocKNuXG2Qc3x8tMJ8YHULSnWC1JZ9wwLdV3LHi7MALGkmLVK8AR9TjyYWlQXivuLt-IWHaEWxz2gjwE3HOFVabmImI9IvKoZhX40iG45xd98WL5Z5k1CWScHGiBLDCyGMXNnvlJKxxNO4cHZnaPuiXYoLZ6crKk7E6BGDjP4PBYLYX8EGhx3y";
 
-            return members;
+            //    using (var httpclient = new HttpClient())
+            //    {
+            //        httpclient.DefaultRequestHeaders.Add("access_token", accesstoken);
 
+            //        string GetListUserEndpoint = $"https://openapi.zalo.me/v3.0/oa/user/getlist?data={{\"offset\":{i},\"count\":50,\"is_follower\":\"true\"}}";
+
+            //        var listUser = await httpclient.GetFromJsonAsync<ZaloListUser>(GetListUserEndpoint);
+
+            //        foreach (var item in listUser.data.users)
+            //        {
+            //            try
+            //            {
+            //                string GetUserDataEndpoint = $"https://openapi.zalo.me/v3.0/oa/user/detail?data={{\"user_id\":\"{item.user_id}\"}}";
+
+            //                var zaloMember = await httpclient.GetFromJsonAsync<ZaloOAUserDetailModel>(GetUserDataEndpoint);
+
+            //                var systemMember = await _memberService.GetMemberAsync(zaloMember.data.user_id_by_app);
+
+            //                if (systemMember == null)
+            //                {
+            //                    var createUserModel = new CreateMemberModel
+            //                    {
+            //                        user_Id = zaloMember.data.user_id,
+            //                        user_Id_By_App = zaloMember.data.user_id_by_app,
+            //                        memberName = zaloMember.data.display_name,
+            //                        isActive = zaloMember.data.user_is_follower,
+            //                        memberAvatar = zaloMember.data.avatar,
+            //                        memberPhone = zaloMember.data.shared_info.phone.ToString()
+            //                    };
+
+            //                    if (DateTime.TryParseExact(zaloMember.data.shared_info.user_dob, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime cusBirthday))
+            //                    {
+            //                        createUserModel.memberBirthday = cusBirthday;
+            //                    }
+
+            //                    var newMember = await _memberService.CreateNewMemberAsync(_mapper.Map<MemberInfo>(createUserModel));
+            //                }
+            //                else
+            //                {
+            //                    if (DateTime.TryParseExact(zaloMember.data.shared_info.user_dob, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime cusBirthday))
+            //                    {
+            //                        systemMember.memberBirthday = cusBirthday;
+            //                    }
+            //                    systemMember.memberAvatar = zaloMember.data.avatar;
+            //                    systemMember.memberPhone = string.IsNullOrEmpty(systemMember.memberPhone) ? systemMember.memberPhone : zaloMember.data.shared_info.phone.ToString();
+            //                    var updateUser = await _memberService.UpdateMemberAsync(systemMember);
+            //                }
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                Console.WriteLine(ex.Message);
+            //            }
+            //        }
+
+            //    }
+            //}
         }
         public async Task<List<ZaloToken>> SeedZaloToken()
         {
             return new List<ZaloToken> { new ZaloToken() };
         }
     }
-    public class MemberSayaka
+    public class Data
+    {
+        public int total { get; set; }
+        public int count { get; set; }
+        public int offset { get; set; }
+        public List<User> users { get; set; }
+    }
+
+    public class ZaloListUser
+    {
+        public Data data { get; set; }
+        public int error { get; set; }
+        public string message { get; set; }
+    }
+
+    public class User
+    {
+        public string user_id { get; set; }
+    }
+    public class SayakaMember
     {
         public string id { get; set; }
         public string birthday { get; set; }

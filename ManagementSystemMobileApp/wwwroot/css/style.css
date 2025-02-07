@@ -343,3 +343,67 @@ img{
 .appContainer{
     margin-bottom: 100px;
 }
+
+/* Update 06/02/2025 */
+.inputRes {
+    width: 100%;
+    padding: 15px 15px;
+    outline: none;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 10px;
+}
+
+    .inputRes:focus {
+        border-color: #130f40;
+    }
+
+.CachRa {
+    margin-bottom: 150px;
+}
+
+.btnDatban {
+    background-color: rgb(211, 211, 112);
+    color: #130f40;
+    border-radius: 30px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btnContainer {
+    width: 100%;
+}
+
+.successTitle {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.successText {
+    font-size: 16px;
+}
+
+.iconBack {
+    padding: 0 5px;
+    background: #130f40;
+    font-size: 20px;
+    color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.textHeaderSuccess {
+    font-size: 18px;
+    font-weight: bold;
+    color: #130f40;
+}
+
+.sucTitle {
+    font-size: 20px;
+}
+/* Update 06/02/2025 */

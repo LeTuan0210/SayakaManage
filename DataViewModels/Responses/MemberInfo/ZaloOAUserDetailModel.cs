@@ -10,6 +10,12 @@
         public string user_last_interaction_date { get; set; }
         public bool user_is_follower { get; set; }
         public string avatar { get; set; }
+        public SharedInfo shared_info { get; set; }
+    }
+    public class SharedInfo
+    {
+        public long phone { get; set; }
+        public string user_dob { get; set; }
     }
     public class ZaloOAUserDetailModel
     {

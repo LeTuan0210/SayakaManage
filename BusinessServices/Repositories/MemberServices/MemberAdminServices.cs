@@ -3,6 +3,7 @@ using DataModels.Entities;
 using DataServices.Interfaces;
 using DataViewModels.Requests;
 using DataViewModels.Requests.MemberInfo;
+using DataViewModels.Responses;
 using DataViewModels.Responses.MemberInfo;
 using System.Net.Http.Json;
 
@@ -19,8 +20,8 @@ namespace BusinessServices.Repositories.MemberServices
             _mapper = mapper;
             _tokenServices = tokenServices;
         }
-        
-        public async Task<MemberInfo> CreateNewMember(CustomerFollowEvent followEvent)
+
+        public async Task<MemberResponseModel> CreateNewMember(CustomerFollowEvent followEvent)
         {
             // Check Member is Exist in Database. If Exist and User is active, return this User
 
@@ -31,8 +32,8 @@ namespace BusinessServices.Repositories.MemberServices
                 memberInfo.isActive = followEvent.event_name == "follow";
 
                 await _memberServices.UpdateMemberAsync(memberInfo);
-                
-                return memberInfo;
+
+                return null;
             }
 
             // Get OA Access Token, Call API check this Member and Update
@@ -56,11 +57,12 @@ namespace BusinessServices.Repositories.MemberServices
                     user_Id_By_App = followerInfo.data.user_id_by_app,
                     memberName = followerInfo.data.display_name,
                     isActive = followerInfo.data.user_is_follower,
+                    memberAvatar = followerInfo.data.avatar,
                 };
 
                 var newMember = await _memberServices.CreateNewMemberAsync(_mapper.Map<MemberInfo>(createUserModel));
 
-                return newMember;
+                return _mapper.Map<MemberResponseModel>(newMember);
             }
         }
 
@@ -79,9 +81,17 @@ namespace BusinessServices.Repositories.MemberServices
             throw new NotImplementedException();
         }
 
-        public Task<MemberInfo> UpdateMemberAsync(MemberInfo member)
+        public async Task<MemberInfo> UpdateMemberAsync(MemberInfo member)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _memberServices.UpdateMemberAsync(member);
+                return member;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

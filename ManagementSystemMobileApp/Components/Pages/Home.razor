@@ -1,15 +1,13 @@
 ﻿@page "/"
 
 <PageTitle>Home Page</PageTitle>
-
-<div class="appContainer">
     <!-- Session 1 -->
     @if(member != null)
     {
         <div class="container my-5">
             <div class="headerApp d-flex flex-column justify-content-center align-items-center gap-3">
                 <div class="imageCustomer">
-                    <img src="./image/user-icon.webp" alt="">
+                <img style="border-radius: 50%" src=@(!string.IsNullOrEmpty(member.memberAvatar) ? member.memberAvatar : "./image/user-icon.webp") alt="">
                 </div>
                 <h1 class="nameUser">@member.memberName</h1>
             </div>
@@ -31,7 +29,7 @@
                     </div>
                     <h3 class="appName">Khuyến mãi</h3>
                 </div>
-                <div @onclick=@(() => ChangePage("/profile")) class="col menuAppIcon d-flex flex-column justify-content-center align-items-center">
+                <div @onclick=@(() => ChangePage("/member-detail")) class="col menuAppIcon d-flex flex-column justify-content-center align-items-center">
                     <div class="appIcon">
                         <i class="bi bi-person-check"></i>
                     </div>
@@ -125,4 +123,3 @@
             </div>
         </div>
     }
-</div>
