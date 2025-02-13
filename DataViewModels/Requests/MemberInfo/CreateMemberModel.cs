@@ -8,6 +8,7 @@
         public string memberName { get; set; } = string.Empty;
         public string memberPhone { get; set; } = string.Empty;
         public string memberAvatar { get; set; } = string.Empty;
+        public string memberEmail { get; set; } = string.Empty;
         public bool canEditPhone { get; set; } = true;
         public DateTime memberBirthday { get; set; } = DateTime.Today;
         public string memberGender { get; set; } = string.Empty;

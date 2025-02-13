@@ -7,9 +7,7 @@ window.getGeoLocation = function () {
     }
 };
 
-window.DisplayAlert = (notice) => {
-    alert(`${notice}`)
-}
+
 
 function successCallback(position) {
     DotNet.invokeMethodAsync('BusinessServices', 'ReceiveGeoLocation', position.coords.latitude, position.coords.longitude);

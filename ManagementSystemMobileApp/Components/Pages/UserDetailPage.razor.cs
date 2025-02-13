@@ -22,6 +22,8 @@ namespace ManagementSystemMobileApp.Components.Pages
         [SupplyParameterFromForm]
         UpdateMemberModel member { get; set; } = new();
 
+        string failInfomation = "";
+
         #endregion
 
         // Function
@@ -29,7 +31,13 @@ namespace ManagementSystemMobileApp.Components.Pages
         protected override async Task OnInitializedAsync() // Hàm Khởi tạo, Load Data
         {
             member = await _memberService.GetUpdateMemberModel();
+
             StateHasChanged();
+
+            failInfomation = _memberService.IsCompleteInfomation();
+
+            if (!string.IsNullOrEmpty(failInfomation))
+               failInfomation = $"Thông tin cần cập nhật: {failInfomation}";
         }
 
         async Task SubmitForm()
@@ -37,12 +45,12 @@ namespace ManagementSystemMobileApp.Components.Pages
             var resultUpdate = await _memberService.UpdateMemberInfoByUser(member);
             if (resultUpdate != null) 
             {
-                //await js.InvokeVoidAsync("DisplayAlert", "Cập nhật thông tin thành công");
+                //await js.InvokeVoidAsync("ShowPageAlert", "Cập nhật thông tin thành công");
                 navigation.NavigateTo(navigation.BaseUri);
             }
             else
             {
-                //await js.InvokeVoidAsync("DisplayAlert", "Cập nhật thông tin thất bại");
+                //await js.InvokeVoidAsync("ShowPageAlert", "Cập nhật thông tin thất bại");
             }
         }
         #endregion

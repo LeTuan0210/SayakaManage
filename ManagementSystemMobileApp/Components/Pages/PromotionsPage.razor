@@ -20,7 +20,7 @@
                         <h3 class="discountName my-1">@item.promotionName</h3>
                         <h4 class="disountDay">@item.createDate.ToString("dd/MM/yyyy")</h4>
                         <p class="discoutDesc">
-                            @item.promotionContent
+                            @(item.promotionContent.ToTextFromHtml().Substring(0, 100))
                         </p>
                     </div>
                 }

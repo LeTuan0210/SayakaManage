@@ -12,8 +12,8 @@
             <h1>@promotion.promotionName</h1>
             <p>Ngày đăng: @promotion.createDate.ToString("dd/MM/yyyy")</p>
         </div>
-        <div class="descDetail">
-            @promotion.promotionContent
+        <div class="descDetail mt-2">
+            @((MarkupString)promotion.promotionContent)
         </div>
     </div>
 
@@ -39,7 +39,7 @@
                                 <div class="resDesc">
                                     <h3 class="resTitle">@item.promotionName</h3>
                                     <p class="resAddress">
-                                        @item.promotionContent
+                                        
                                     </p>
                                 </div>
                             </div>

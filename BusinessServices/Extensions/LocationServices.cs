@@ -19,7 +19,10 @@ namespace BusinessServices.Extensions
         {
             await _jsRuntime.InvokeVoidAsync("getGeoLocation");
         }
-        
+
+        public bool IsLocated() => _longitude != 106.6690751;
+
+
         public double CalculateDistance(double latitude, double longitude)
         {
             double dLat = DegreesToRadians(latitude - _latitude);

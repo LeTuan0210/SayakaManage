@@ -1,6 +1,8 @@
 ﻿@page "/login"
+
 @inject IMemberClientServices memberServices
 @inject NavigationManager Navigation
+<PageTitle>Sayaka Membership</PageTitle>
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -21,7 +23,15 @@
         {
             await memberServices.AuthenticationMember(queryParams["code"]);
 
-            Navigation.NavigateTo(Navigation.BaseUri);
+            var infomation = memberServices.IsCompleteInfomation();
+
+            if (string.IsNullOrEmpty(infomation) || infomation == "Không xác thực được người dùng")
+            {
+                Navigation.NavigateTo(Navigation.BaseUri);
+                return;
+            }
+            
+            Navigation.NavigateTo("/member-detail");            
         }
         catch
         {

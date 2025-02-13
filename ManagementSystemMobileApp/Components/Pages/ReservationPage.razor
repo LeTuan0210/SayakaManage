@@ -1,0 +1,102 @@
+﻿@page "/dat-ban"
+<PageTitle>Đặt bàn Sayaka Buffet</PageTitle>
+@if (restaurants != null)
+{
+    <EditForm Model="model" OnValidSubmit="SubmitOrder">
+        <div class="container">
+            <div class="d-flex align-items-center gap-2 px-2">
+                <div class="flex-1">
+                    <h3 class="formTitle my-1">Miền</h3>
+                    <InputSelect @bind-Value="selectedArea" class="form-select" aria-label="Default select example">
+                        <option value="">Tất cả</option>
+                        @foreach (var item in restaurants.DistinctBy(x => x.restaurantArea))
+                        {
+                            <option value="@item.restaurantArea">@item.restaurantArea</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div class="flex-1">
+                    <h3 class="formTitle my-1">Tỉnh, Thành phố</h3>
+                    <InputSelect @bind-Value="selectedCity" class="form-select" aria-label="Default select example">
+                        <option value="" selected>Tất cả</option>
+                        @foreach (var item in restaurants.Where(x => x.restaurantArea.Contains(selectedArea)).DistinctBy(x => x.restaurantCity).OrderBy(x => x.restaurantCity))
+                        {
+                            <option value="@item.restaurantCity">@item.restaurantCity</option>
+                        }
+                    </InputSelect>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="flex-2">
+                <h3 class="formTitle my-1">Chọn nhà hàng</h3>
+                <InputSelect @bind-Value="model.restaurantId" class="form-select" aria-label="Default select example">
+                    @foreach (var item in restaurants.Where(x => x.restaurantArea.Contains(selectedArea) && x.restaurantCity.Contains(selectedCity)))
+                    {
+                        <option value="@item.Id">@item.restaurantName - @item.restaurantCity</option>
+                    }
+                </InputSelect>
+
+            </div>
+        </div>
+
+        <div class="container mt-3 CachRa">
+            <div class="d-flex gap-2 align-items-center">
+                <div class="flex-1">
+                    <h3 class="formTitle my-1">Chọn Ngày</h3>
+                    <InputDate class="form-select" @bind-Value="model.orderDate" />
+                </div>
+                <div class="flex-2">
+                    <h3 class="formTitle my-1">Chọn Giờ</h3>
+                    <InputSelect @bind-Value="selectedHour" class="form-select" aria-label="Default select example" disabled="@(model.orderDate.Date < DateTime.Now.Date)">
+                        @for (int i = (DateTime.Now.Date == model.orderDate.Date && DateTime.Now.Hour > 10) ? DateTime.Now.Hour + 1 : 10; i < 21; i++)
+                        {
+                            <option value="@i">@i : 00</option>
+                        }
+                    </InputSelect>
+                </div>
+            </div>
+            <div>
+                <h3 class="formTitle my-1">Số người</h3>
+                <InputSelect @bind-Value="model.countCustomer" class="form-select" aria-label="Default select example">
+                    @for (int i = 2; i < 5; i++)
+                    {
+                        <option value="@i">@i người</option>
+                    }
+                    <option value="3">Hơn 4 người</option>
+                </InputSelect>
+            </div>
+            <div class="resForm my-3">
+                <h3 class="formTitle my-1">
+                    <i class="bi bi-person"></i>
+                    Tên Khách Hàng
+                </h3>
+                <InputText @bind-Value="model.customerName" type="text" class="inputRes" placeholder="Name ..." />
+            </div>
+            <div class="resForm my-3">
+                <h3 class="formTitle my-1">
+                    <i class="bi bi-phone"></i>
+                    Số Điện Thoại
+                </h3>
+                <InputText @bind-Value="model.customerPhone" type="text" class="inputRes" placeholder="Phone ..." />
+            </div>
+            <div class="resForm my-3">
+                <h3 class="formTitle my-1">
+                    <i class="bi bi-envelope"></i>
+                    Email
+                </h3>
+                <InputText @bind-Value="model.customerEmail" type="text" class="inputRes" placeholder="Email ..." />
+            </div>
+            <div class="resForm my-3">
+                <h3 class="formTitle my-1">
+                    <i class="bi bi-pencil-square"></i>
+                    Ghi chú
+                </h3>
+                <InputTextArea @bind-Value="model.orderNote" rows="2" cols="2" class="inputRes" placeholder="Notice"></InputTextArea>
+            </div>
+            <div class="btnContainer">
+                <button type="submit" class=" btnDatban" disabled="@(model.orderDate.Date < DateTime.Now.Date)"><i class="bi bi-bell-fill"></i> Đặt Bàn Ngay</button>
+            </div>
+        </div>
+    </EditForm>
+}

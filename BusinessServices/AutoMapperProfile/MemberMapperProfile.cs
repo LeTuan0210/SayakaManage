@@ -12,8 +12,7 @@ namespace BusinessServices.AutoMapperProfile
         {
             CreateMap<MemberInfo, MemberResponseModel>();
 
-            CreateMap<CreateMemberModel, MemberInfo>()
-                .ForMember(x => x.favouriteRestaurant, src => src.MapFrom(x => new List<RestaurantInfo>()));
+            CreateMap<CreateMemberModel, MemberInfo>();
 
             CreateMap<MemberInfo, UpdateMemberModel>();
 

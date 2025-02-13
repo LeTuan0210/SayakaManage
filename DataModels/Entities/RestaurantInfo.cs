@@ -14,6 +14,5 @@
         public double restaurantLatitude { get; set; } = 0;
         public double restaurantLongitude { get; set; } = 0;
         public string restaurantEmbedMap { get; set; } = "";
-        public ICollection<MemberFavouriteRestaurant> favouriteMember { get; set; }
     }
 }

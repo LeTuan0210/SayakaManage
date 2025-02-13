@@ -1,8 +1,10 @@
-﻿namespace DataModels.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DataModels.Entities
 {
     public class MemberInfo
     {
-        public Guid Id { get; set; }
+        [Key]
         public string user_Id { get; set; } = string.Empty;
         public string user_Id_By_App { get; set; } = string.Empty;
         public string memberName {  get; set; } = string.Empty;
@@ -11,7 +13,7 @@
         public string memberAvatar {  get; set; } = string.Empty;
         public bool canEditPhone { get; set; } = true;
         public DateTime memberBirthday { get; set; } = DateTime.Today;
-        public ICollection<MemberFavouriteRestaurant> favouriteRestaurant { get; set; }
+        public ICollection<CustomerOrder>? memberOrders { get; set; }
         public string memberGender { get; set; } = string.Empty;
         public bool isActive { get; set; } = true;
     }

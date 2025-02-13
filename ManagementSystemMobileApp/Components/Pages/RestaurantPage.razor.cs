@@ -35,8 +35,13 @@ namespace ManagementSystemMobileApp.Components.Pages
 
         async Task GetLocation()
         {
-             await _locationServices.GetLocation();
+            do
+            {
+                await _locationServices.GetLocation();
+                await Task.Delay(1000);
+            } while (!_locationServices.IsLocated());
             restaurants = restaurants.OrderBy(x => _locationServices.CalculateDistance(x.restaurantLatitude, x.restaurantLongitude)).ToList();
+            StateHasChanged();
         }
         #endregion
     }

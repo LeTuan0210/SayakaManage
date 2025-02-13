@@ -10,6 +10,7 @@ namespace BusinessServices.Repositories
         Task<UpdateMemberModel> GetUpdateMemberModel();
         Task<MemberResponseModel> ChangeFavouriteRestaurant(Guid restaurantId, bool status);
         Task<MemberResponseModel> UpdateMemberInfoByUser(UpdateMemberModel model);
-        bool IsAuthenticate();
+        bool IsAuthenticated();
+        string IsCompleteInfomation();
     }
 }

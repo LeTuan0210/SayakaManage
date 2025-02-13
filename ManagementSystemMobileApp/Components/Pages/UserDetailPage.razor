@@ -1,5 +1,5 @@
 ﻿@page "/member-detail"
-
+<PageTitle>Sayaka Membership</PageTitle>
 @if(member != null)
 {
     <div class="container my-5">
@@ -11,6 +11,9 @@
         </div>
     </div>
     <div class="container">
+        <p>
+            @failInfomation
+        </p>
         <EditForm Model="member" class="d-flex flex-column gap-3" OnValidSubmit="SubmitForm">
             <DataAnnotationsValidator />
             <div class="form-group">

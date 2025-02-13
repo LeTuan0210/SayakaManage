@@ -5,7 +5,6 @@ using DataViewModels.Requests;
 using DataViewModels.Responses;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
 
@@ -93,24 +92,30 @@ namespace BusinessServices.Repositories
         {
             try
             {
-                var result = await _storage.GetAsync<MemberResponseModel>("user_member");
+                //var result = await _storage.GetAsync<MemberResponseModel>("user_member");
 
                 MemberInfo? member;
 
-                if (result.Success)
-                {
-                    _memberInfo = result.Value;
+                //if (result.Success)
+                //{
+                //    _memberInfo = result.Value;
 
-                    member = await _memberDataServices.GetMemberAsync(_memberInfo.user_Id_By_App);
-                }
-                else
-                {
-                    var token_Result = await GetUserAccessToken(authorizeCode);
+                //    member = await _memberDataServices.GetMemberAsync(_memberInfo.user_Id_By_App);
+                //}
+                //else
+                //{
+                //    var token_Result = await GetUserAccessToken(authorizeCode);
 
-                    var userInfo = await GetMemberInfomation(token_Result.access_token);
+                //    var userInfo = await GetMemberInfomation(token_Result.access_token);
 
-                    member = await _memberDataServices.GetMemberAsync(userInfo.id);
-                }  
+                //    member = await _memberDataServices.GetMemberAsync(userInfo.id);
+                //}
+
+                var token_Result = await GetUserAccessToken(authorizeCode);
+
+                var userInfo = await GetMemberInfomation(token_Result.access_token);
+
+                member = await _memberDataServices.GetMemberAsync(userInfo.id);
 
                 if (member == null)
                 {                    
@@ -119,7 +124,7 @@ namespace BusinessServices.Repositories
 
                 _memberInfo = _mapper.Map<MemberResponseModel>(member);
 
-                await _storage.SetAsync("user_member", _memberInfo);
+                //await _storage.SetAsync("user_member", _memberInfo);
             }
             catch (Exception ex)
             {
@@ -128,7 +133,7 @@ namespace BusinessServices.Repositories
         }
         #endregion
 
-        public bool IsAuthenticate()
+        public bool IsAuthenticated()
         {
             return _memberInfo != null ? true : false;
         }        
@@ -192,7 +197,7 @@ namespace BusinessServices.Repositories
 
         public async Task<MemberResponseModel> GetMemberInfo()
         {
-            await AuthenticationMember();
+            //await AuthenticationMember();
 
             return _memberInfo ?? null;
         }
@@ -200,6 +205,31 @@ namespace BusinessServices.Repositories
         public Task<DataModels.Entities.MemberInfo> GetMemberById(string id)
         {
             throw new NotImplementedException();
+        }
+
+        public string IsCompleteInfomation()
+        {
+            if(_memberInfo == null)
+                return "Không xác thực được người dùng";
+
+            string validateResult = "";
+
+            if(string.IsNullOrEmpty(_memberInfo.memberPhone) || _memberInfo.memberPhone.Length > 12 || _memberInfo.memberPhone.Length < 9)
+            {
+                validateResult += "Số Điện Thoại";
+            }
+
+            if(_memberInfo.memberBirthday.Year == DateTime.Now.Year)
+            {
+                validateResult += ", Sinh Nhật";
+            }    
+
+            if(validateResult.StartsWith(", "))
+            {
+                return validateResult.Substring(2);
+            }    
+
+            return validateResult;
         }
     }
 }

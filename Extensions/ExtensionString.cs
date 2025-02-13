@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.Xml;
+using HtmlAgilityPack;
 
 namespace Extensions
 {
@@ -47,6 +49,26 @@ namespace Extensions
                 // Log exception for debugging
                 Console.WriteLine($"Error in ToAliasString: {ex.Message}");
                 return string.Empty;
+            }
+        }
+        public static string ToTextFromHtml(this string input)
+        {
+            try
+            {
+                var htmlDoc = new HtmlDocument();
+
+                htmlDoc.LoadHtml(input);
+
+                var textContent = string.Join(" ", htmlDoc.DocumentNode.Descendants().Where(node => node.NodeType == HtmlNodeType.Text && !string.IsNullOrWhiteSpace(node.InnerText)).Select(node => node.InnerText.Trim()));
+
+                if (textContent.Length > 230)
+                    return textContent.Substring(0, 230) + " ...";
+
+                return textContent;
+            }
+            catch
+            {
+                return "Loading ...";
             }
         }
     }

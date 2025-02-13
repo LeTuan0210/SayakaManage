@@ -13,6 +13,7 @@ namespace DataServices
             services.AddScoped<IRestaurantDataServices, RestaurantDataServices>();
 
             services.AddScoped<IMenuDataServices, MenuDataServices>();
+            services.AddScoped<IReservationDataServices, ReservationDataServices>();
 
             services.AddScoped<ISystemPromotionDataServices, SystemPromotionDataServices>();
 

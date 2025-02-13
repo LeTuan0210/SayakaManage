@@ -46,6 +46,12 @@ namespace BusinessServices
             // Zalo Token Services
 
             services.AddScoped<IZaloTokenServices, ZaloTokenServices>();
+            services.AddScoped<IZaloServices, ZaloServices>();
+
+            // Reservation Services
+
+            services.AddScoped<IReservationBaseServices, ReservationBaseServices>();
+            services.AddScoped<IReservationClientServices, ReservationClientServices>();
         }
     }
 }

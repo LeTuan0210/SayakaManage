@@ -344,6 +344,17 @@ img{
     margin-bottom: 100px;
 }
 
+.formTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #130f40;
+}
+
+.form-select {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 /* Update 06/02/2025 */
 .inputRes {
     width: 100%;

@@ -31,12 +31,6 @@ namespace DataServices.Repository
             return await _context.MemberInfos.ToListAsync();
         }
 
-        public async Task<MemberInfo> GetMemberAsync(Guid id)
-        {
-            var member = await _context.MemberInfos.FirstOrDefaultAsync(x => x.Id == id);
-            return member;
-        }
-
         public async Task<MemberInfo> GetMemberAsync(string user_id_by_app)
         {
             var member = await _context.MemberInfos.FirstOrDefaultAsync(x => x.user_Id_By_App == user_id_by_app);

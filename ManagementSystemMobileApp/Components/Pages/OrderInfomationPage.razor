@@ -1,0 +1,71 @@
+﻿@page "/order/{id}"
+<PageTitle>Thông tin bàn đặt - Sayaka Buffet</PageTitle>
+
+@if(model != null)
+{
+    <div class="container my-3">
+        <div @onclick=@(() => navigation.NavigateTo("/")) class="iconBack">
+            <i class="bi bi-arrow-left"></i>
+        </div>
+        <div class="textHeaderSuccess">
+            <h3 class="text-center">Thông tin đặt bàn</h3>
+        </div>
+    </div>
+    <div class="container">
+        <h3 class="resTitle sucTitle">Nhà Hàng</h3>
+        <div class="row flex-column gap-3 align-items-center justify-content-center">
+            <div class="container">
+                <div class="row d-flex justify-content-start align-items-center px-3">
+                    <div class="resImage col-3">
+                        <img src="@model.restaurant.restaurantAvatarLink" alt="" class="w-100 h-100">
+                    </div>
+                    <div class="resDesc col-9">
+                        <h3 class="resTitle">@model.restaurant.restaurantName</h3>
+                        <p class="resAddress">
+                            <i class="bi bi-geo-alt"></i>
+                            @model.restaurant.restaurantAddress
+                        </p>
+                        <p class="resAddress">
+                            <i class="bi bi-telephone-fill"></i>
+                            @model.restaurant.restaurantPhone
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h3 class="resTitle sucTitle">Chi tiết</h3>
+        <div class="detailOrder mx-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Mã đặt bàn:</p>
+                <p class="successText">@model.id.ToString().Substring(0,6)</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Tên Khách Hàng:</p>
+                <p class="successText">@model.customerName</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Số Điện Thoại:</p>
+                <p class="successText">@model.customerPhone</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Email:</p>
+                <p class="successText">@model.customerEmail</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Thời gian:</p>
+                <p class="successText">@model.orderDate.ToString("dd/MM/yyyy - HH:mm")</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Số khách:</p>
+                <p class="successText">@model.countCustomer khách</p>
+            </div>            
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="successTitle">Lời nhắn:</p>
+                <p class="successText">@model.orderNote</p>
+            </div>
+        </div>
+    </div>
+}
