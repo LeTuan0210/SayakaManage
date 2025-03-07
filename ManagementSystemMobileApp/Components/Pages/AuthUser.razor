@@ -2,16 +2,16 @@
 
 @inject IMemberClientServices memberServices
 @inject NavigationManager Navigation
+
 <PageTitle>Sayaka Membership</PageTitle>
 
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if(firstRender)
-        {
+<div class="text-center">
+    <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
-        }
-    }
+@code {
     protected override async Task OnInitializedAsync()
     {
         var uri = Navigation.ToAbsoluteUri(Navigation.Uri);

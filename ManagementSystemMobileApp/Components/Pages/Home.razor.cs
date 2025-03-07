@@ -37,9 +37,13 @@ namespace ManagementSystemMobileApp.Components.Pages
         protected override async Task OnInitializedAsync() // Hàm Khởi tạo, Load Data
         {
             promotions = await _promotionServices.GetAllPromotionAsync(new PromotionFilter());
+
             restaurants = await _restaurantServices.GetAllRestaurantsAsync(new RestaurantFilter { PageSize = 100});
+
             menus = await _menuServices.GetAllMenuAsync(new MenuFilter());
+
             member = await _memberServices.GetMemberInfo();
+
             StateHasChanged();
         }
         void ChangePage(string page)
