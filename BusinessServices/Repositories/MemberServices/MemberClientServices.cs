@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessServices.Repositories.MemberServices;
 using DataModels.Entities;
 using DataServices.Interfaces;
 using DataViewModels.Requests;
@@ -10,7 +11,7 @@ using System.Net.Http.Json;
 
 namespace BusinessServices.Repositories
 {
-    public class MemberClientServices : IMemberClientServices
+    public class MemberClientServices : MemberBaseServices, IMemberClientServices
     {
         private readonly IWebHostEnvironment _env;
 
@@ -29,7 +30,7 @@ namespace BusinessServices.Repositories
                                     ProtectedLocalStorage storage,
                                     IMemberDataServices memberDataServices,
                                     IMapper mapper,
-                                    IZaloTokenDataServices tokenDataServices)
+                                    IZaloTokenDataServices tokenDataServices) : base (memberDataServices, mapper)
         {
             _env = env;
             _configuration = configuration;

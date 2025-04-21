@@ -14,7 +14,7 @@ namespace BusinessServices.Repositories.MemberServices
         private readonly IMemberDataServices _memberServices;
         private readonly IZaloTokenServices _tokenServices;
         private readonly IMapper _mapper;
-        public MemberAdminServices(IMemberDataServices memberServices, IMapper mapper, IZaloTokenServices tokenServices)
+        public MemberAdminServices(IMemberDataServices memberServices, IMapper mapper, IZaloTokenServices tokenServices) : base (memberServices, mapper)
         {
             _memberServices = memberServices;
             _mapper = mapper;

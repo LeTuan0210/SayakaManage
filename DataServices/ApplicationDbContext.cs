@@ -13,6 +13,9 @@ namespace DataServices
         public DbSet<MemberInfo> MemberInfos { get; set; } = default!;
         public DbSet<ZaloToken> ZaloTokens { get; set; } = default!;
         public DbSet<CustomerOrder> CustomerOrders { get; set; } = default!;
+        public DbSet<ZaloPromotion> ZaloPromotions { get; set; } = default!;
+        public DbSet<ZaloPromotionButton> ZaloPromotionButtons { get; set; } = default!;
+        public DbSet<ZaloPromotionElement> ZaloPromotionElements { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

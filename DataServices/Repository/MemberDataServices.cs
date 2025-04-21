@@ -7,6 +7,11 @@ namespace DataServices.Repository
 {
     public class MemberDataServices(ApplicationDbContext _context) : IMemberDataServices
     {
+        public int CountUnsendMember()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<MemberInfo>> CreateListMemberAsync(List<MemberInfo> member)
         {
             throw new NotImplementedException();
@@ -26,9 +31,14 @@ namespace DataServices.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<List<MemberInfo>> GetAllMenuAsync(MenuFilter filter)
+        public async Task<List<MemberInfo>> GetAllMemberAsync(MemberFilter filter)
         {
-            return await _context.MemberInfos.ToListAsync();
+            var query = _context.MemberInfos.AsQueryable();
+
+            if (filter.birthdayMonth != 0)
+                query = query.Where(x => x.memberBirthday.Month == filter.birthdayMonth);
+
+            return await query.ToListAsync();
         }
 
         public async Task<MemberInfo> GetMemberAsync(string user_id_by_app)
@@ -38,8 +48,21 @@ namespace DataServices.Repository
             return member;
         }
 
+        public void ResetMemberSend()
+        {
+            try
+            {
+                _context.Database.ExecuteSqlRaw("Update MemberInfos set ");
+            }
+            catch
+            {
+
+            }
+        }
+
         public async Task<MemberInfo> UpdateMemberAsync(MemberInfo menu)
         {
+            menu.hasModify = true;
             _context.MemberInfos.Update(menu);
             await _context.SaveChangesAsync();
             return menu;

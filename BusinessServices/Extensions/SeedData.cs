@@ -191,7 +191,7 @@ namespace BusinessServices.Extensions
             {
                 var listMember = await httpclient.GetFromJsonAsync<List<SayakaMember>>("https://sayaka.vn/api/zalo/getmember");
 
-                var listSystemMember = await _memberService.GetAllMenuAsync(new DataModels.Filter.MenuFilter());
+                var listSystemMember = await _memberService.GetAllMemberAsync(new DataModels.Filter.MemberFilter());
 
                 foreach(var item in listSystemMember)
                 {

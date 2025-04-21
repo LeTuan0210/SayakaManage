@@ -13,5 +13,6 @@
     public class Recipient
     {
         public string user_id { get; set; }
+        public string group_id { get; set; }
     }
 }

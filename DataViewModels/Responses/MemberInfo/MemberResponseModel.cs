@@ -15,5 +15,7 @@ namespace DataViewModels.Responses
         public List<RestaurantResponseModel> favouriteRestaurant { get; set; } = new List<RestaurantResponseModel>();
         public string memberGender { get; set; }
         public bool isActive { get; set; }
+        public bool isSendedPromotion { get; set; } = false;
+        public bool hasModify { get; set; } = false;
     }
 }

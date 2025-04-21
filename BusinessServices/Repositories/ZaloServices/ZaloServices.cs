@@ -11,7 +11,8 @@ namespace BusinessServices.Repositories
     {
         public async Task<bool> SendTextToAdmin(string text)
         {
-            List<string> admins = new List<string> { "2037863224857417512", "2910676812089540619", "4733319382129802719" };
+            List<string> admins = _config.GetSection("Admin_Id").Get<List<string>>();
+
             try
             {
                 var accessToken = await _tokenServices.GetAccessToken();
@@ -39,6 +40,34 @@ namespace BusinessServices.Repositories
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
+                return false;
+            }
+        }
+        public async Task<bool> SendTextToGroup(string text)
+        {
+            try
+            {
+                var accessToken = await _tokenServices.GetAccessToken();
+
+                using (var client = new HttpClient())
+                {
+                    string Endpoint = _config["ZaloManager:SendGroupText"];
+
+                    client.DefaultRequestHeaders.Add("access_token", accessToken);
+
+                    TextMessageModel message = new TextMessageModel();
+
+                    message.recipient.group_id = _config["ZaloManager:Group_Id"];
+
+                    message.message.text = text;
+
+                    var response = await client.PostAsJsonAsync(Endpoint, message);
+                }
+
+                return true;
+            }
+            catch
+            {
                 return false;
             }
         }

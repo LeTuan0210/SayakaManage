@@ -16,5 +16,7 @@ namespace DataModels.Entities
         public ICollection<CustomerOrder>? memberOrders { get; set; }
         public string memberGender { get; set; } = string.Empty;
         public bool isActive { get; set; } = true;
+        public bool isSendedPromotion {  get; set; } = false;
+        public bool hasModify { get; set; } = false;
     }
 }

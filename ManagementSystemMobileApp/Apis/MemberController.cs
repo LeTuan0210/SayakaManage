@@ -27,6 +27,32 @@ namespace ManagementSystemMobileApp.Apis
             }
             return Ok();
         }
+        [HttpGet]
+        [Route("/api/zalo/getmemberbirthday/{month}")]
+        public async Task<ActionResult> GetMemberByBirthdayMonth(int month)
+        {
+            try
+            {
+                if (month < 0 || month > 12)
+                    return BadRequest();
+                var query = await _memberServices.GetMemberByBirthdayMonthAsync(month);
+
+                var result = query.Where(x => x.hasModify).Select(x => new
+                {
+                    ID = x.user_Id,
+                    Name = x.memberName,
+                    Phone = x.memberPhone,
+                    Restaurant = "Khong co",
+                    Birthday = x.memberBirthday.ToString("dd/MM/yyyy")
+                });
+
+                return Ok(result);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
     public class Message
     {

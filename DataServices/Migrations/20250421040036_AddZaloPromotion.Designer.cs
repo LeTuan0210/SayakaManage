@@ -4,6 +4,7 @@ using DataServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataServices.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250421040036_AddZaloPromotion")]
+    partial class AddZaloPromotion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,13 +76,7 @@ namespace DataServices.Migrations
                     b.Property<bool>("canEditPhone")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("hasModify")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isSendedPromotion")
                         .HasColumnType("bit");
 
                     b.Property<string>("memberAvatar")
