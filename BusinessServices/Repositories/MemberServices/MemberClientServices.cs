@@ -177,6 +177,8 @@ namespace BusinessServices.Repositories
 
                 _mapper.Map(model, updateMember);
 
+                updateMember.hasModify = true;
+
                 updateMember = await _memberDataServices.UpdateMemberAsync(updateMember);
 
                 if (updateMember != null)

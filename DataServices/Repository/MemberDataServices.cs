@@ -7,10 +7,7 @@ namespace DataServices.Repository
 {
     public class MemberDataServices(ApplicationDbContext _context) : IMemberDataServices
     {
-        public int CountUnsendMember()
-        {
-            throw new NotImplementedException();
-        }
+        public int CountUnsendMember() => _context.MemberInfos.Count(x => !x.isSendedPromotion);
 
         public Task<List<MemberInfo>> CreateListMemberAsync(List<MemberInfo> member)
         {
@@ -38,6 +35,18 @@ namespace DataServices.Repository
             if (filter.birthdayMonth != 0)
                 query = query.Where(x => x.memberBirthday.Month == filter.birthdayMonth);
 
+            switch(filter.isSentPromotion)
+            {
+                case 1:
+                    query = query.Where(x => !x.isSendedPromotion);
+                    break;
+                case 2:
+                    query = query.Where(x => x.isSendedPromotion);
+                    break;
+            }    
+
+            query = query.Skip(filter.skipItem).Take(filter.PageSize);
+
             return await query.ToListAsync();
         }
 
@@ -62,7 +71,6 @@ namespace DataServices.Repository
 
         public async Task<MemberInfo> UpdateMemberAsync(MemberInfo menu)
         {
-            menu.hasModify = true;
             _context.MemberInfos.Update(menu);
             await _context.SaveChangesAsync();
             return menu;

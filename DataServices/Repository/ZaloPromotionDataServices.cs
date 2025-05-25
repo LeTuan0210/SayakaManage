@@ -35,7 +35,7 @@ namespace DataServices.Repository
 
         public async Task<ZaloPromotion> GetDefaultPromotion()
         {
-            var result = await _context.ZaloPromotions.FirstOrDefaultAsync(x => x.isDefault);
+            var result = await _context.ZaloPromotions.Include(x => x.buttons).Include(x => x.elements).FirstOrDefaultAsync(x => x.isDefault);
 
             if(result != null)
                 return result;
@@ -46,6 +46,15 @@ namespace DataServices.Repository
         public Task<ZaloPromotion> GetPromotionById(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public void UpdateLastTimeSend()
+        {
+            try
+            {
+                _context.Database.ExecuteSqlRaw($"Update ZaloPromotions set lastSend='{DateTime.Now.ToShortDateString()}'");
+            }
+            catch { }
         }
 
         public Task<ZaloPromotion> UpdatePromotion(ZaloPromotion zaloPromotion)

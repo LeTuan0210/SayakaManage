@@ -20,6 +20,8 @@ namespace DataServices
             services.AddScoped<IMemberDataServices, MemberDataServices>();
 
             services.AddScoped<IZaloTokenDataServices, ZaloTokenDataServices>();
+
+            services.AddScoped<IZaloPromotionDataServices, ZaloPromotionDataServices>();
         }
     }
 }

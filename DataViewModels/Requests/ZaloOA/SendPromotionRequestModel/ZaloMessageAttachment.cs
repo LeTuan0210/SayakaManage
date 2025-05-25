@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataViewModels.Requests
+﻿namespace DataViewModels.Requests
 {
-    internal class ZaloMessageAttachment
+    public class ZaloMessageAttachment
     {
+        public string type { get; set; } = "template";
+        public ZaloPromotionPayloadRequest payload { get; set; } = new ZaloPromotionPayloadRequest();
     }
 }

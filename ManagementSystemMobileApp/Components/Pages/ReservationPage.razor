@@ -59,11 +59,10 @@
             <div>
                 <h3 class="formTitle my-1">Số người</h3>
                 <InputSelect @bind-Value="model.countCustomer" class="form-select" aria-label="Default select example">
-                    @for (int i = 2; i < 5; i++)
+                    @for (int i = 1; i <= 10; i++)
                     {
                         <option value="@i">@i người</option>
                     }
-                    <option value="3">Hơn 4 người</option>
                 </InputSelect>
             </div>
             <div class="resForm my-3">

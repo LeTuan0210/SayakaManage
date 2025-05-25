@@ -2,6 +2,7 @@
 using BusinessServices.Extensions;
 using BusinessServices.Repositories;
 using BusinessServices.Repositories.MemberServices;
+using BusinessServices.Repositories.ZaloWorkerServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessServices
@@ -52,6 +53,14 @@ namespace BusinessServices
 
             services.AddScoped<IReservationBaseServices, ReservationBaseServices>();
             services.AddScoped<IReservationClientServices, ReservationClientServices>();
+
+            //
+
+            services.AddScoped<IZaloPromotionServices, ZaloPromotionServices>();
+
+            // Worker Services
+
+            services.AddHostedService<ZaloBackgroundServices>();
         }
     }
 }

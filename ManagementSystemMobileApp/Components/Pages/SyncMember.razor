@@ -1,12 +1,13 @@
-﻿
-@using BusinessServices.Extensions
-@inject SeedData seed
+﻿@page "/SendMessage"
+@using BusinessServices
+@inject IZaloPromotionServices _promotionServices
+@inject IZaloServices _zaloServices
 
 <button @onclick=SeedMember>Seed</button>
 
 @code {
     async Task SeedMember()
     {
-        await seed.SeedMember();
+        await _zaloServices.SendTestPromotion();
     }
 }

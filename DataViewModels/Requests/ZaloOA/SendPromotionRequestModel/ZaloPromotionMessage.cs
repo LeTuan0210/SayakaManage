@@ -1,6 +1,7 @@
 ﻿namespace DataViewModels.Requests
 {
-    internal class ZaloPromotionMessage
+    public class ZaloPromotionMessage
     {
+        public ZaloMessageAttachment attachment = new ZaloMessageAttachment();
     }
 }

@@ -28,6 +28,43 @@ namespace ManagementSystemMobileApp.Apis
             return Ok();
         }
         [HttpGet]
+        [Route("/api/send-zalo-promotion")]
+        public async Task<ActionResult> SendAllPromotion()
+        {
+            try
+            {
+                var result = await _zaloServices.SendAllPromotion();
+                
+                if(!result)
+                {
+                    return BadRequest();
+                }    
+                
+                return Ok();
+            }
+            catch
+            {
+
+            }
+            return BadRequest();
+        }
+        [HttpGet]
+        [Route("/api/send-test-promotion")]
+        public async Task<ActionResult> SendTestromotion()
+        {
+            try
+            {
+                await _zaloServices.SendTestPromotion();
+
+                return Ok();
+            }
+            catch
+            {
+
+            }
+            return BadRequest();
+        }
+        [HttpGet]
         [Route("/api/zalo/getmemberbirthday/{month}")]
         public async Task<ActionResult> GetMemberByBirthdayMonth(int month)
         {

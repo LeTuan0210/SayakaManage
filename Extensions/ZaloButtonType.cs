@@ -1,6 +1,6 @@
 ﻿namespace Extensions
 {
-    public static class ZaloButtonType
+    public static class ZaloElementType
     {
         public static string Banner = "banner";
         public static string Header = "header";
