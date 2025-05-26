@@ -49,7 +49,10 @@ namespace BusinessServices.Repositories
                 var countMember = _memberServices.CountUnsendMember();
                 
                 if(countMember == 0)
+                {
                     _memberServices.ResetMemberSend();
+                    await SendTextToAdmin("Đã gửi tất cả khách hàng. Reset Danh Sách");
+                }    
 
                 return true;
             }

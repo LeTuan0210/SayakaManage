@@ -16,24 +16,10 @@ namespace DataServices
         public DbSet<ZaloPromotion> ZaloPromotions { get; set; } = default!;
         public DbSet<ZaloPromotionButton> ZaloPromotionButtons { get; set; } = default!;
         public DbSet<ZaloPromotionElement> ZaloPromotionElements { get; set; } = default!;
+        public DbSet<MemberTransaction> MemberTransactions { get; set; } = default!;
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-            // Config for Member and Favourite Restaurant
-
-            //builder.Entity<MemberFavouriteRestaurant>()
-            //    .HasKey(k => new { k.restaurantInfoId, k.memberInfoId });
-
-            //builder.Entity<MemberFavouriteRestaurant>()
-            //    .HasOne(member => member.memberInfo)
-            //    .WithMany(member => member.favouriteRestaurant)
-            //    .HasForeignKey(m => m.memberInfoId);
-
-            //builder.Entity<MemberFavouriteRestaurant>()
-            //    .HasOne(restaurant => restaurant.restaurantInfo)
-            //    .WithMany(restaurant => restaurant.favouriteMember)
-            //    .HasForeignKey(r => r.restaurantInfoId);
 
             builder.Entity<MemberInfo>()
                 .HasMany(x => x.memberOrders)

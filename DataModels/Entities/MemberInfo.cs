@@ -18,5 +18,6 @@ namespace DataModels.Entities
         public bool isActive { get; set; } = true;
         public bool isSendedPromotion {  get; set; } = false;
         public bool hasModify { get; set; } = false;
+        public List<MemberTransaction>? memberTransactions { get; set; }
     }
 }

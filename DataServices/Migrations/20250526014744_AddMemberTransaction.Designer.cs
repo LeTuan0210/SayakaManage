@@ -4,6 +4,7 @@ using DataServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataServices.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250526014744_AddMemberTransaction")]
+    partial class AddMemberTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,8 +128,11 @@ namespace DataServices.Migrations
                     b.Property<Guid>("cashierId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("memberInfouser_Id")
+                    b.Property<string>("memberId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("memberInfouser_Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("orderId")
@@ -630,9 +636,7 @@ namespace DataServices.Migrations
                 {
                     b.HasOne("DataModels.Entities.MemberInfo", "memberInfo")
                         .WithMany("memberTransactions")
-                        .HasForeignKey("memberInfouser_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("memberInfouser_Id");
 
                     b.HasOne("DataModels.Entities.RestaurantInfo", "restaurant")
                         .WithMany()
