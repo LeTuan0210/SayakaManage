@@ -496,4 +496,9 @@ img{
     font-size: 10px;
     font-weight: 400;
 }
+.null-history{
+    font-size: 18px;
+    color: var(--main--color);
+}
+
 /*End Member Poin CSS*/

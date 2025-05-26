@@ -54,9 +54,15 @@ namespace BusinessServices
             services.AddScoped<IReservationBaseServices, ReservationBaseServices>();
             services.AddScoped<IReservationClientServices, ReservationClientServices>();
 
-            //
+            // Zalo Services
 
             services.AddScoped<IZaloPromotionServices, ZaloPromotionServices>();
+
+            // Transaction Services
+
+            services.AddScoped<ITransactionBaseServices, TransactionBaseServices>();
+            services.AddScoped<ITransactionClientServices, TransactionClientServices>();
+            services.AddScoped<ITransactionAdminServices, TransactionAdminServices>();
 
             // Worker Services
 

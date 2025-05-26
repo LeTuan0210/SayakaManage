@@ -2,7 +2,6 @@
 using DataModels.Filter;
 using DataServices.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Net.WebSockets;
 
 namespace DataServices.Repository
 {
@@ -39,7 +38,7 @@ namespace DataServices.Repository
                     break;
             }
 
-            return await query.ToListAsync();
+            return await query.Include(x => x.memberInfo).Include(x => x.restaurant).ToListAsync();
         }
     }
 }

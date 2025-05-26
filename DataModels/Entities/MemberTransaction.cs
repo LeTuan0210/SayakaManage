@@ -11,6 +11,7 @@
         public string transactionTitle { get; set; }
         public string transactionDescription { get; set; }
         public int transactionValue { get; set; }
+        public int orderValue { get; set; }
         public DateTime transactionDate { get; set; } = DateTime.Now;
         public string? orderId { get; set; }
     }
