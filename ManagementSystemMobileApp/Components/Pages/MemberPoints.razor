@@ -1,0 +1,584 @@
+﻿@page "/member-points"
+
+<div class="container-fluid m-0 p-0 member-poin">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center my-5">
+            <div class="member-group d-flex align-items-center gap-2">
+                <div class="member-image">
+                    <img src="./image/demoUser.png" class="member-avatar" alt="Ảnh đại diện" />
+                </div>
+                <div class="member-desc">
+                    <p class="member-name">Huỳnh Anh</p>
+                    <p class="member-phone">0123456789</p>
+                </div>
+            </div>
+            <div class="poin">
+                <div class="poin-in d-flex justify-content-center align-items-center gap-2">
+                    <p class="count-title">Điểm:</p>
+                    <p class="poin-count">5.000</p>
+                </div>
+            </div>
+        </div>
+        <div class="qr-poin-code d-flex flex-column align-items-center justify-content-center gap-1">
+            <p class="qr-title">Đưa mã cho nhân viên để tích, sử dụng điểm.</p>
+            <div class="qr-image">
+                <img src="./image/demo-qr.webp" alt="This is your QR" class="img-qr" />
+            </div>
+            @* <p class="qr-number">123456</p> *@
+        </div>
+    </div>
+    <div class="container history-member">
+        <p class="titleSections">Lịch sử giao dịch</p>
+        <div class="scrollable-list mt-3">
+            <ul class="history-list d-flex flex-column gap-3">
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-danger poin-count">- 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-danger poin-count">- 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-danger poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-danger poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-danger poin-count">- 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between align-items-center shadow-sm py-2 px-1">
+                    <div class=" d-flex align-items-center justify-content-start gap-1">
+                        <div class="his-image">
+                            <img src="./image/check-icon.jpg" class="icon-check" />
+                        </div>
+                        <div class="hist-content d-flex flex-column justify-content-start">
+                            <p class="poin-title">Tích điểm hóa đơn ...</p>
+                            <p class="poin-date">26/05/2025 - 8:41</p>
+                            <p class="poin-desc">Tích điểm tại nhà hàng Sayaka Gò Vấp</p>
+                            <p class="poin-desc">Giá trị hóa đơn: 1.000.000 vnđ</p>
+                        </div>
+                    </div>
+                    <div class="his-status flex-column justify-content-start gap-1">
+                        <p class="text-success poin-count">+ 500</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@code {
+
+}
