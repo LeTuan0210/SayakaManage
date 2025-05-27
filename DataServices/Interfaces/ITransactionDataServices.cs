@@ -7,5 +7,6 @@ namespace DataServices.Interfaces
     {
         Task<List<MemberTransaction>> GetAllTransactions(TransactionFilter transactionFilter);
         Task<MemberTransaction> CreateNewTransaction(MemberTransaction memberTransaction);
+        Task<MemberTransaction> GetTransactionById(int id);
     }
 }

@@ -38,7 +38,27 @@ namespace DataServices.Repository
                     break;
             }
 
+            if(transactionFilter.startDate != null || transactionFilter.endDate != null && transactionFilter.startDate >= transactionFilter.endDate)
+            {
+                query = query.Where(transaction => transaction.transactionDate.Date >= transactionFilter.startDate.Value.Date && transaction.transactionDate.Date <= transactionFilter.endDate.Value.Date);
+            }
+            else if (transactionFilter.startDate == null && transactionFilter.endDate != null)
+            {
+                query = query.Where(transaction =>  transaction.transactionDate.Date <= transactionFilter.endDate.Value.Date);
+            }
+            else if(transactionFilter.startDate != null && transactionFilter.endDate == null)
+            {
+                query = query.Where(transaction => transaction.transactionDate.Date >= transactionFilter.startDate.Value.Date);
+            }
+
+            query = query.OrderByDescending(x => x.transactionDate).Skip((transactionFilter.PageNumber - 1) * transactionFilter.PageSize).Take(transactionFilter.PageSize);
+
             return await query.Include(x => x.memberInfo).Include(x => x.restaurant).ToListAsync();
+        }
+
+        public async Task<MemberTransaction> GetTransactionById(int id)
+        {
+            return await _context.MemberTransactions.Include(x => x.memberInfo).Include(x => x.restaurant).FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

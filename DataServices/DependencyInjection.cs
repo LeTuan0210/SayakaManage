@@ -13,6 +13,7 @@ namespace DataServices
             services.AddScoped<IRestaurantDataServices, RestaurantDataServices>();
 
             services.AddScoped<IMenuDataServices, MenuDataServices>();
+
             services.AddScoped<IReservationDataServices, ReservationDataServices>();
 
             services.AddScoped<ISystemPromotionDataServices, SystemPromotionDataServices>();
@@ -24,6 +25,8 @@ namespace DataServices
             services.AddScoped<IZaloPromotionDataServices, ZaloPromotionDataServices>();
 
             services.AddScoped<ITransactionDataServices, TransactionDataServices>();
+
+            services.AddScoped<IUserDataServices, UserDataServices>();
         }
     }
 }

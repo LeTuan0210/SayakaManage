@@ -9,6 +9,49 @@ namespace BusinessServices.Repositories
     public class ZaloTokenServices(IZaloTokenDataServices _tokenService, IConfiguration _config) : IZaloTokenServices
     {
         ZaloToken? access_token;
+
+        public async Task<bool> CheckTokenAsync(string userId)
+        {
+            var checkResult = await _tokenService.GetTokenById(userId);
+
+            if (checkResult == null) 
+                return false;
+
+            return true;
+        }
+
+        public async Task<bool> CreateTokenAsync(string userId)
+        {
+            try
+            {
+                var newToken = new ZaloToken { Id = userId, tokenValue = "Login in " + DateTime.Now.ToShortDateString(), expireTime = DateTime.Now};
+
+                var result = await _tokenService.CreateToken(newToken);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
+        public async Task<bool> DeteleTokenAsync(string userId)
+        {
+            try
+            {
+                var result = await _tokenService.DeleteToken(userId);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
         public async Task<string> GetAccessToken()
         {
             try

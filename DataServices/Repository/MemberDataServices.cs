@@ -57,6 +57,13 @@ namespace DataServices.Repository
             return member;
         }
 
+        public async Task<MemberInfo> GetMemberByUserIdAsync(string userId)
+        {
+            var member = await _context.MemberInfos.FirstOrDefaultAsync(x => x.user_Id == userId);
+
+            return member;
+        }
+
         public void ResetMemberSend()
         {
             try

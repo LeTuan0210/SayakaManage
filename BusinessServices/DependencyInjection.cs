@@ -64,6 +64,10 @@ namespace BusinessServices
             services.AddScoped<ITransactionClientServices, TransactionClientServices>();
             services.AddScoped<ITransactionAdminServices, TransactionAdminServices>();
 
+            // Auth Services
+
+            services.AddScoped<IAuthServices, AuthServices>();
+
             // Worker Services
 
             services.AddHostedService<ZaloBackgroundServices>();

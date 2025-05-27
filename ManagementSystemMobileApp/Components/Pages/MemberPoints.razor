@@ -48,7 +48,7 @@
                                         <p class="poin-desc">@transaction.transactionDescription</p>
                                         @if (transaction.orderValue > 0)
                                         {
-                                            <p class="poin-desc">Giá trị hóa đơn: @transaction.orderValue vnđ</p>
+                                            <p class="poin-desc">Giá trị hóa đơn: @transaction.orderValue.ToString("N0") vnđ</p>
                                         }
                                     </div>
                                 </div>

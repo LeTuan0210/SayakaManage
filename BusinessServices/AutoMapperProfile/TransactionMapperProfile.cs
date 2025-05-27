@@ -19,6 +19,12 @@ namespace BusinessServices.AutoMapperProfile
             CreateMap<TransactionRequestModel, TransactionFilter>()
                 .ForMember(dest => dest.PageSize, src => src.MapFrom(src => src.pageSize))
                 .ForMember(dest => dest.PageNumber, src => src.MapFrom(src => src.page));
+            CreateMap<CreateTransactionRequestModel, MemberTransaction>()
+                .ForMember(dest => dest.memberInfouser_Id, src => src.MapFrom(src => src.memberId))
+                .ForMember(dest => dest.cashierId, src => src.MapFrom(src => Guid.Parse(src.cashierId)))
+                .ForMember(dest => dest.restaurantId, src => src.MapFrom(src => Guid.Parse(src.restaurantId)))
+                .ForMember(dest => dest.orderValue, src => src.MapFrom(src => src.orderValue))
+                .ForMember(dest => dest.orderId, src => src.MapFrom(src => src.orderId));
         }
     }
 }

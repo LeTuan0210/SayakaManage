@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using DataModels.Entities;
 using DataModels.Filter;
 using DataServices.Interfaces;
 using DataViewModels.Responses;
@@ -29,9 +28,23 @@ namespace BusinessServices.Repositories.MemberServices
             }
         }
 
-        Task<MemberInfo> IMemberBaseServices.GetMemberById(string id)
+        public async Task<MemberResponseModel> GetMemberById(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await _memberServices.GetMemberByUserIdAsync(id);
+
+                if(result == null)
+                {
+                    return null;
+                }
+
+                return _mapper.Map<MemberResponseModel>(result);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

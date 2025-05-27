@@ -1,13 +1,15 @@
-﻿@page "/SendMessage"
-@using BusinessServices
-@inject IZaloPromotionServices _promotionServices
-@inject IZaloServices _zaloServices
+﻿@* @page "/CreateUser" *@
+@inject ITransactionAdminServices _transactionServices
+@inject IAuthServices _authServices
 
 <button @onclick=SeedMember>Seed</button>
 
 @code {
     async Task SeedMember()
     {
-        await _zaloServices.SendTestPromotion();
+        // var newTransaction = new CreateTransactionRequestModel { cashierId = "c533cdad-2d0d-4654-8c5d-c5eac8428284", memberId = "4733319382129802719", orderId = "0005", orderValue = 950000, restaurantId = "efe54ad0-3557-427e-84be-af3bf294eba1" };
+        // var result = await _transactionServices.CreateNewTransaction(newTransaction);
+        var loginModel = new LoginModel { username = "admin@sayaka.vn", password = "Tuan@938624" };
+        var result = await _authServices.LoginUser(loginModel);
     }
 }
