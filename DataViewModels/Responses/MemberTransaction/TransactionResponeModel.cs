@@ -7,6 +7,7 @@
         public string memberName { get; set; }
         public string memberPhone { get; set; }
         public string restaurant { get; set; }
+        public string restaurantId { get; set; }
         public string transactionTitle { get; set; }
         public string transactionDescription { get; set; }
         public int transactionValue { get; set; }

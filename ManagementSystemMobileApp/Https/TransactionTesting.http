@@ -1,0 +1,41 @@
+﻿@HostAddress = https://member.sayaka.vn
+
+### Lấy danh sách giao dịch
+POST {{HostAddress}}/api/transactions/get-list-transactions
+Content-Type: application/json
+userId: c533cdad-2d0d-4654-8c5d-c5eac8428284
+{
+  "restaurantId": "",
+  "memberId" : "",
+  "page": 1,
+  "pageSize": 10,
+  "transactionType": 0,
+  "memberPhone" : ""
+}
+
+###
+
+### Tạo giao dịch tích Điểm
+POST {{HostAddress}}/api/transactions/create-transaction
+Content-Type: application/json
+userId: c533cdad-2d0d-4654-8c5d-c5eac8428284
+{
+  "memberId": "4733319382129802719",
+  "cashierId" : "c533cdad-2d0d-4654-8c5d-c5eac8428284",
+  "restaurantId": "efe54ad0-3557-427e-84be-af3bf294eba1",
+  "orderId": "0007",
+  "orderValue": 2000000
+}
+###
+
+### Tạo giao dịch dùng Điểm
+POST {{HostAddress}}/api/transactions/use-point
+Content-Type: application/json
+userId: c533cdad-2d0d-4654-8c5d-c5eac8428284
+{
+  "memberId": "4733319382129802719",
+  "cashierId" : "c533cdad-2d0d-4654-8c5d-c5eac8428284",
+  "restaurantId": "efe54ad0-3557-427e-84be-af3bf294eba1",
+  "pointUse": 200000
+}
+###

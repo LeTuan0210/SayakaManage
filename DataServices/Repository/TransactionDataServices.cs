@@ -7,6 +7,12 @@ namespace DataServices.Repository
 {
     public class TransactionDataServices(ApplicationDbContext _context) : ITransactionDataServices
     {
+        public Task<int> CheckMemberPointAsync(string userId)
+        {
+            var result = _context.MemberTransactions.Where(x => x.memberInfouser_Id == userId).SumAsync(x => x.transactionValue);
+            return result;
+        }
+
         public async Task<MemberTransaction> CreateNewTransaction(MemberTransaction memberTransaction)
         {
             _context.MemberTransactions.Add(memberTransaction);
@@ -23,10 +29,15 @@ namespace DataServices.Repository
                 query = query.Where(transaction => transaction.memberInfouser_Id == transactionFilter.memberId);
             }
 
+            if(!string.IsNullOrEmpty(transactionFilter.memberPhone))
+            {
+                query = query.Where(transaction => transaction.memberInfo.memberPhone.Contains(transactionFilter.memberPhone));
+            }    
+
             if (!string.IsNullOrEmpty(transactionFilter.restaurantId))
             {
                 query = query.Where(transaction => transaction.restaurantId.ToString() == transactionFilter.restaurantId);
-            }
+            }                           
 
             switch(transactionFilter.transactionType)
             {
@@ -52,7 +63,7 @@ namespace DataServices.Repository
             }
 
             query = query.OrderByDescending(x => x.transactionDate).Skip((transactionFilter.PageNumber - 1) * transactionFilter.PageSize).Take(transactionFilter.PageSize);
-
+             
             return await query.Include(x => x.memberInfo).Include(x => x.restaurant).ToListAsync();
         }
 

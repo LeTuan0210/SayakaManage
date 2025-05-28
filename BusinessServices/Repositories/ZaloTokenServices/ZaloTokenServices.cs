@@ -24,6 +24,11 @@ namespace BusinessServices.Repositories
         {
             try
             {
+                var token = await CheckTokenAsync(userId);
+
+                if(token)
+                    return true;
+
                 var newToken = new ZaloToken { Id = userId, tokenValue = "Login in " + DateTime.Now.ToShortDateString(), expireTime = DateTime.Now};
 
                 var result = await _tokenService.CreateToken(newToken);

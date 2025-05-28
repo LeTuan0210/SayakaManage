@@ -9,6 +9,24 @@ namespace BusinessServices.Repositories
 {
     public class AuthServices(UserManager<ApplicationUser> _userManager, IZaloTokenServices _tokenServices, IUserDataServices _userServices) : IAuthServices
     {
+        public async Task<SystemUserResponseModel> CheckUserInfo(string userId)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+
+                if (user == null)
+                    throw new NullReferenceException("Don't have this user name");
+
+                return new CashierResponseModel { userId = user.Id, userName = user.UserName, position = user.Position ?? "Không có", userFullName = user.UserFullname, restaurantId = user.RestaurantId.ToString() ?? "Không có", restaurantName = user.Restaurant.restaurantName };
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<SystemUserResponseModel> CreateNewUser(CreateUserModel createUser)
         {
             try
@@ -86,6 +104,19 @@ namespace BusinessServices.Repositories
             catch(Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public async Task<bool> LogoutUser(string userId)
+        {
+            try
+            {
+                var result = await _tokenServices.DeteleTokenAsync(userId);
+                return result;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

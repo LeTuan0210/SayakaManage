@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using DataServices;
 using DataServices.Interfaces;
 using DataServices.Repository;
+using Microsoft.AspNetCore.Identity;
 
 namespace BusinessServices.Repositories
 {
@@ -8,7 +10,7 @@ namespace BusinessServices.Repositories
     {
         private readonly ITransactionDataServices _transactionDataServices;
         private readonly IMapper _mapper;
-        public TransactionClientServices(ITransactionDataServices transactionServices, IMapper mapper) : base(transactionServices, mapper)
+        public TransactionClientServices(ITransactionDataServices transactionServices, IMapper mapper, UserManager<ApplicationUser> userManager) : base(transactionServices, mapper, userManager)
         {
             _transactionDataServices = transactionServices;
             _mapper = mapper;

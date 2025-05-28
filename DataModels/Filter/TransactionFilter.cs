@@ -7,5 +7,6 @@
         public string? memberId { get; set; }
         public string? restaurantId { get; set; }
         public int transactionType { get; set; } = 0;
+        public string? memberPhone { get; set; }
     }
 }

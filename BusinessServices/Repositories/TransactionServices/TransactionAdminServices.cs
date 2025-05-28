@@ -16,13 +16,49 @@ namespace BusinessServices.Repositories
         private readonly IMemberAdminServices _memberAdminServices;
         private readonly IRestaurantServerServices _restaurantServices;
         private readonly UserManager<ApplicationUser> _userManager;
-        public TransactionAdminServices(ITransactionDataServices transactionServices, IMapper mapper, IMemberAdminServices memberAdminServices, IRestaurantServerServices restaurantServices, UserManager<ApplicationUser> userManager) : base(transactionServices, mapper)
+        public TransactionAdminServices(ITransactionDataServices transactionServices, IMapper mapper, IMemberAdminServices memberAdminServices, IRestaurantServerServices restaurantServices, UserManager<ApplicationUser> userManager) : base(transactionServices, mapper, userManager)
         {
             _transactionDataServices = transactionServices;
             _mapper = mapper;
             _memberAdminServices = memberAdminServices;
             _restaurantServices = restaurantServices;
             _userManager = userManager;
+        }
+
+        public async Task<TransactionResponeModel> CreateMemberUsePointTransaction(MemberUsePointRequestModel transaction)
+        {
+            var user = await _userManager.FindByIdAsync(transaction.cashierId);
+
+            if (user == null)
+                throw new Exception("Không có nhân viên trùng với id này");
+
+            var member = await _memberAdminServices.GetMemberById(transaction.memberId);
+
+            if (member == null)
+                throw new Exception("Không tìm thấy thành viên với Id này");
+
+            var memberPoint = await _transactionDataServices.CheckMemberPointAsync(transaction.memberId);
+
+            if(memberPoint < transaction.pointUse)
+            {
+                throw new Exception("Bạn không đủ Điểm để sử dụng.");
+            }
+
+            var restaurant = await _restaurantServices.GetRestaurantByIdAsync(Guid.Parse(transaction.restaurantId));
+
+            if (restaurant == null)
+                throw new Exception("Không có nhà hàng với mã này");
+
+            var newTransaction = _mapper.Map<MemberTransaction>(transaction);
+
+            newTransaction.transactionTitle = "Sử dụng Điểm";
+            newTransaction.transactionDescription = $"Sử dụng {transaction.pointUse.ToString("N0")} tại {restaurant.restaurantName}.";
+            newTransaction.orderValue = 0;
+            newTransaction.orderId = "-";
+
+            var result = await _transactionDataServices.CreateNewTransaction(newTransaction);
+
+            return _mapper.Map<TransactionResponeModel>(result);
         }
 
         public async Task<TransactionResponeModel> CreateNewTransaction(CreateTransactionRequestModel transaction)
@@ -54,5 +90,6 @@ namespace BusinessServices.Repositories
 
             return _mapper.Map<TransactionResponeModel>(newTransaction);
         }
+
     }
 }

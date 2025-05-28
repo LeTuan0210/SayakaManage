@@ -7,7 +7,7 @@ namespace DataServices.Repository
     {
         public async Task<ApplicationUser> GetUserByUsername(string username)
         {
-            var user = await _context.Users.Include(x => x.Restaurant).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await _context.Users.Include(x => x.Restaurant).AsNoTracking().FirstOrDefaultAsync(x => x.Id == username);
             return user;
         }
     }

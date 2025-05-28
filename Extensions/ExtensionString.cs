@@ -71,5 +71,20 @@ namespace Extensions
                 return "Loading ...";
             }
         }
+
+        public static string ToSecurePhoneNumber(this string phoneNumber)
+        {
+            try
+            {
+                if (phoneNumber.Length != 10 || phoneNumber.Length < 10)
+                    return phoneNumber;
+
+                return phoneNumber.Substring(0, 3) + "xxx" + phoneNumber.Substring(6, 4);
+            }
+            catch
+            {
+                return "Không có";
+            }
+        }
     }
 }

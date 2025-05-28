@@ -1,0 +1,9 @@
+﻿@HostAddress = https://member.sayaka.vn
+
+### Check thông tin Thành viên
+
+GET {{HostAddress}}/api/member/4733319382129802719
+Content-Type: application/json
+userId: c533cdad-2d0d-4654-8c5d-c5eac8428284
+
+###

@@ -1,0 +1,19 @@
+﻿###@HostAddress = https://member.sayaka.vn
+@HostAddress = https://localhost:7257
+
+# Login
+
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+{
+  "username": "admin@sayaka.vn",
+  "password" : "Tuan@938624"
+}
+
+### Logout
+
+POST {{HostAddress}}/api/auth/logout
+Content-Type: application/json
+{
+  "token": "c533cdad-2d0d-4654-8c5d-c5eac8428284"
+}

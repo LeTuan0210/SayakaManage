@@ -29,7 +29,7 @@ namespace ManagementSystemMobileApp.Apis
                 switch(result.position)
                 {
                     case "Cashier":
-                        var cashier = await _authServicses.GetCashierInfo(result.userName);
+                        var cashier = await _authServicses.GetCashierInfo(result.userId);
                         return Ok(new ApiResponseModel("Success", "User Login Successfully", cashier));
 
                     case "Accountant":
@@ -45,6 +45,27 @@ namespace ManagementSystemMobileApp.Apis
                 return BadRequest(new ApiResponseModel("Failure", ex.Message));
             }
             
+        }
+
+        [HttpPost]
+        [Route("api/auth/logout")]
+        public async Task<ActionResult<ApiResponseModel>> LogoutUser([FromBody] LogoutModel user)
+        {
+            try
+            {
+                var result = await _authServicses.LogoutUser(user.token);
+
+                if (!result)
+                    return BadRequest(new ApiResponseModel("Failure", "Logout Fail. Please try again"));
+
+                return Ok(new ApiResponseModel("Success", "User Log out"));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiResponseModel("Failure", ex.Message));
+            }
+
         }
     }
 }

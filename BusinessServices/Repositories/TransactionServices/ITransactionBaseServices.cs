@@ -6,5 +6,6 @@ namespace BusinessServices.Repositories
     public interface ITransactionBaseServices
     {
         Task<List<TransactionResponeModel>> GetTransactionsAsync(TransactionFilter filter);
+        Task<int> CheckMemberPoint(string userId);
     }
 }
